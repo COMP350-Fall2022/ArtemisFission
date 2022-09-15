@@ -11,7 +11,7 @@ jobs:
       # Request manual activation file
       - name: Unity - Request Activation File
         id: getManualLicenseFile
-        uses: game-ci/unity-request-activation-file
+        uses: game-ci/unity-request-activation-file@v2.0.0
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
       - name: Expose as artifact
         uses: actions/upload-artifact@v2
