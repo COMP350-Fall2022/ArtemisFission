@@ -1,0 +1,38 @@
+name: Build Project
+
+on:
+  pull_request:
+    types: [opened, reopened]
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch: {}
+
+jobs:
+  Build Mono:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Load Cache
+      uses: actions/cache@v2
+      with:
+        path: path/to/your/project/Library
+        key: Library-MyProjectName-TargetPlatform
+        restore-keys: |
+          Library-MyProjectName-
+          Library-
+
+      - name: Run Builder
+      uses: game-ci/unity-builder@v2
+      env:
+        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      with:
+        targetPlatform: WebGL
+
+      - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Build
+        path: build
