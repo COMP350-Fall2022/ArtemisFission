@@ -9,7 +9,7 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  Build Mono:
+  build-mono:
     name: build
     runs-on: ubuntu-latest
     steps:
