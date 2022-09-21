@@ -13,14 +13,6 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: Load Cache
-        uses: actions/cache@v2
-        with:
-          path: path/to/your/project/Library
-          key: Library-MyProjectName-TargetPlatform
-          restore-keys: |
-            Library-MyProjectName-
-            Library-
 
       - name: Run Builder
         uses: game-ci/unity-builder@v2
@@ -30,6 +22,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
+          unityVersion: 2021.3.8f1
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
