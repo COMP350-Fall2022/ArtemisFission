@@ -9,8 +9,9 @@ public class ButtonUI : MonoBehaviour
         Debug.Log("clicked");
         EmployeeSkill[] skills = {EmployeeSkill.Skill1};
 
-        Employee e = cont.createNewEmployee("Employee "+Random.Range(0f, 10f), 100, skills);
-        
-        Debug.Log(e.getName());
+        string id = cont.createNewEmployee("Employee "+Random.Range(0f, 10f), 100, skills);
+        cont.logAllEmployees();
+        cont.fireEmployee(id);
+        cont.logAllEmployees();
     }
 }
