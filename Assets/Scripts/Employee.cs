@@ -26,24 +26,24 @@ public class Employee
         this.id = System.Guid.NewGuid();
     }
 
-    public void setName(string newName) {
+    public void SetName(string newName) {
         // Preform any checks we need to on the name.
         this.name = newName;
     }
 
-    public string getName() {
+    public string GetName() {
         return this.name;
     }
 
-    public string getId() {
+    public string GetId() {
         return this.id.ToString();
     }
 
-    public EmployeeSkill[] getSkills() {
+    public EmployeeSkill[] GetSkills() {
         return this.skills;
     }
 
-    public int getSalary() {
+    public int GetSalary() {
         return this.salary;
     }
 }

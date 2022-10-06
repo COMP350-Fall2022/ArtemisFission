@@ -15,7 +15,7 @@ public class EmployeeController
     }
 
     // Creates an employee and returns the ID for it.
-    public string createNewEmployee(string name, int salary, EmployeeSkill[] skills) {
+    public string CreateNewEmployee(string name, int salary, EmployeeSkill[] skills) {
         Employee e = new Employee(name, salary, skills);
         string id = e.getId();
         employees.Add(id, e);
@@ -23,7 +23,7 @@ public class EmployeeController
     }
 
     // Deletes or "fires" an employee
-    public bool fireEmployee(string id) {
+    public bool FireEmployee(string id) {
         return employees.Remove(id);
     }
 
