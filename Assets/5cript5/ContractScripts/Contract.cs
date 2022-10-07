@@ -32,14 +32,7 @@ public class Contract
     {
         return contractName;
     }
-
-    /* //Change time to complete contract
-    public void ChangeTime(float newTime)
-    {
-        timeToComplete = newTime;
-    }
-    */
-
+  
     //Get time to complete
     public float GetTime()
     {
@@ -57,13 +50,6 @@ public class Contract
     {
         return assignedWorkers;
     }
-
-    /* //change amount awarded
-    public void ChangeAward(int newAward)
-    {
-        amountAwarded = newAward;
-    }
-    */
 
     //get amount awarded
     public int GetAward()
