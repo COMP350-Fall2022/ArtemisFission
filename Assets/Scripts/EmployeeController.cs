@@ -17,7 +17,7 @@ public class EmployeeController
     // Creates an employee and returns the ID for it.
     public string CreateNewEmployee(string name, int salary, EmployeeSkill[] skills) {
         Employee e = new Employee(name, salary, skills);
-        string id = e.getId();
+        string id = e.GetId();
         employees.Add(id, e);
         return id;
     }
@@ -28,11 +28,11 @@ public class EmployeeController
     }
 
     // Print out all employees to the log. For convience purposes.
-    public void logAllEmployees() {
+    public void LogAllEmployees() {
         Debug.Log("Logging (" + employees.Count + ") employees...");
 
         foreach(KeyValuePair<string, Employee> entry in employees) {
-            Debug.Log("    > " + entry.Value.getName());
+            Debug.Log("    > " + entry.Value.GetName());
         }
     }
 }
