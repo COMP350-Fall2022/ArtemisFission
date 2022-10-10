@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 //Contract Object
+using System;
+
 public class Contract
 {
     internal string contractName;
@@ -10,7 +8,7 @@ public class Contract
     int assignedWorkers;
     int amountAwarded;
     int contractType;
-    
+    private Guid guid;
 
     public Contract(string contractName, float timeToComplete, int assignedWorkers, int amountAwarded, int contractType)
     {
@@ -19,48 +17,61 @@ public class Contract
         this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
+        this.guid = Guid.NewGuid();
     }
 
     //Change name of contract
-    public void ChangeName(string newName)
+    public void SetName(string newName)
     {
-        contractName = newName;
+        this.contractName = newName;
     }
 
     //Get name of contract
     public string GetName()
     {
-        return contractName;
+        return this.contractName;
     }
   
     //Get time to complete
     public float GetTime()
     {
-        return timeToComplete;
+        return this.timeToComplete;
     }
 
-    //Change assigned workers
-    public void ChangeAssignedWorkers(int newNumber)
+    //add assigned workers
+    public void AddAssignedWorkers()
     {
-        assignedWorkers = newNumber;
+        this.assignedWorkers += 1;
+    }
+
+    //remove assigned workers
+    public void RemoveAssignedWorkers()
+    {
+        this.assignedWorkers -= 1;
     }
 
     //get assigned workers
     public int GetAssignedWorkers()
     {
-        return assignedWorkers;
+        return this.assignedWorkers;
     }
 
     //get amount awarded
     public int GetAward()
     {
-        return amountAwarded;
+        return this.amountAwarded;
     }
 
     //get contract type
     public int GetContractType()
     {
-        return contractType;
+        return this.contractType;
+    }
+
+    //get guid as string
+    public string GetGuid()
+    {
+        return this.guid.ToString();
     }
 }
 
