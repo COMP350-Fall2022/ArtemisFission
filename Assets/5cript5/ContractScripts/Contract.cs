@@ -7,16 +7,14 @@ public class Contract
 {
     internal string contractName;
     float timeToComplete;
-    int assignedWorkers;
+    List<string> assignedWorkers;
     int amountAwarded;
     int contractType;
     
-
-    public Contract(string contractName, float timeToComplete, int assignedWorkers, int amountAwarded, int contractType)
+    public Contract(string contractName, float timeToComplete, int amountAwarded, int contractType)
     {
         this.contractName = contractName;
         this.timeToComplete = timeToComplete;
-        this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
     }
@@ -39,14 +37,18 @@ public class Contract
         return timeToComplete;
     }
 
-    //Change assigned workers
-    public void ChangeAssignedWorkers(int newNumber)
-    {
-        assignedWorkers = newNumber;
+    // Assign workers
+    public void AssignWorker(string workerId) {
+        assignedWorkers.Add(workerId);
+    }
+
+    // Remove workers from being assigned
+    public bool UnassignWorker(string workerId) {
+        return assignedWorkers.Remove(workerId);
     }
 
     //get assigned workers
-    public int GetAssignedWorkers()
+    public List<string> GetAssignedWorkers()
     {
         return assignedWorkers;
     }

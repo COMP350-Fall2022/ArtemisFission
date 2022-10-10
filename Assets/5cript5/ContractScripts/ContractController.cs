@@ -12,9 +12,9 @@ public class ContractController
     }
 
     // Creates a contract and returns a pointer to it
-    public Contract CreateNewContract(string contractName, float timeToComplete, int assignedWorkers, int amountAwarded, int contractType)
+    public Contract CreateNewContract(string contractName, float timeToComplete, int amountAwarded, int contractType)
     {
-        Contract c = new Contract(contractName, timeToComplete, assignedWorkers, amountAwarded, contractType);
+        Contract c = new Contract(contractName, timeToComplete, amountAwarded, contractType);
         contracts.Add(c); 
         return c;
     }
