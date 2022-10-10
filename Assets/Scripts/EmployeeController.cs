@@ -5,23 +5,34 @@ using UnityEngine;
 // Controller for all employees in the game. Keeps track of all active employees.
 public class EmployeeController
 {
-    List<Employee> employees;
+    Dictionary<string, Employee> employees;
+    int maxEmployees;
 
-    public EmployeeController() {
-        this.employees = new List<Employee>();
+    // Constructor.
+    public EmployeeController(int maxEmployees) {
+        employees = new Dictionary<string, Employee>();
+        this.maxEmployees = maxEmployees;
     }
 
-    // Creates an employee and returns a pointer to it
-    public Employee createNewEmployee(string name, int salary, EmployeeSkill[] skills) {
+    // Creates an employee and returns the ID for it.
+    public string CreateNewEmployee(string name, int salary, EmployeeSkill[] skills) {
         Employee e = new Employee(name, salary, skills);
-        employees.Add(e);
-        return e;
+        string id = e.GetId();
+        employees.Add(id, e);
+        return id;
     }
 
-    public void logAllEmployees() {
-        Debug.Log(employees.Count);
-        for (int i = 0; i < employees.Count; i++) {
-            Debug.Log(employees[i].employeeName);
+    // Deletes or "fires" an employee
+    public bool FireEmployee(string id) {
+        return employees.Remove(id);
+    }
+
+    // Print out all employees to the log. For convience purposes.
+    public void LogAllEmployees() {
+        Debug.Log("Logging (" + employees.Count + ") employees...");
+
+        foreach(KeyValuePair<string, Employee> entry in employees) {
+            Debug.Log("    > " + entry.Value.GetName());
         }
     }
 }
