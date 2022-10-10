@@ -26,7 +26,7 @@ public class ContractController
     }
 
     //Return a contract
-    public Contract ReturnContract(string guid)
+    public Contract GetContract(string guid)
     {
         return contracts[guid];
     }

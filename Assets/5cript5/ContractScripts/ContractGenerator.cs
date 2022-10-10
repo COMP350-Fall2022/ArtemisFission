@@ -44,7 +44,7 @@ public class ContractGenerator : MonoBehaviour
     {
         NewContract();
         controller.LogContract(guid);
-        c = controller.ReturnContract(guid);
+        c = controller.GetContract(guid);
     }
 
     void Update()
