@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 //Contract Object
+using System;
+
 public class Contract
 {
     internal string contractName;
@@ -10,6 +8,8 @@ public class Contract
     List<string> assignedWorkers;
     int amountAwarded;
     int contractType;
+
+    private Guid guid;
     
     public Contract(string contractName, float timeToComplete, int amountAwarded, int contractType)
     {
@@ -17,24 +17,31 @@ public class Contract
         this.timeToComplete = timeToComplete;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
+        this.guid = Guid.NewGuid();
     }
 
     //Change name of contract
-    public void ChangeName(string newName)
+    public void SetName(string newName)
     {
-        contractName = newName;
+        this.contractName = newName;
     }
 
     //Get name of contract
     public string GetName()
     {
-        return contractName;
+        return this.contractName;
     }
   
     //Get time to complete
     public float GetTime()
     {
-        return timeToComplete;
+        return this.timeToComplete;
+    }
+
+    //add assigned workers
+    public void AddAssignedWorkers()
+    {
+        this.assignedWorkers += 1;
     }
 
     // Assign workers
@@ -50,19 +57,25 @@ public class Contract
     //get assigned workers
     public List<string> GetAssignedWorkers()
     {
-        return assignedWorkers;
+        return this.assignedWorkers;
     }
 
     //get amount awarded
     public int GetAward()
     {
-        return amountAwarded;
+        return this.amountAwarded;
     }
 
     //get contract type
     public int GetContractType()
     {
-        return contractType;
+        return this.contractType;
+    }
+
+    //get guid as string
+    public string GetGuid()
+    {
+        return this.guid.ToString();
     }
 }
 
