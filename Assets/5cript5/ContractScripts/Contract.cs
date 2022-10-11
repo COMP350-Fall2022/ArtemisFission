@@ -1,5 +1,10 @@
 //Contract Object
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Runtime.InteropServices;
 using System;
+
 
 public class Contract
 {
@@ -36,12 +41,6 @@ public class Contract
     public float GetTime()
     {
         return this.timeToComplete;
-    }
-
-    //add assigned workers
-    public void AddAssignedWorkers()
-    {
-        this.assignedWorkers += 1;
     }
 
     // Assign workers
