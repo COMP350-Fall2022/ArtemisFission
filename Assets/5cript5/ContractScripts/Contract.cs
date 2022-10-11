@@ -1,20 +1,24 @@
 //Contract Object
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Runtime.InteropServices;
 using System;
 
 public class Contract
 {
     internal string contractName;
     float timeToComplete;
-    int assignedWorkers;
+    List<string> assignedWorkers;
     int amountAwarded;
     int contractType;
-    private Guid guid;
 
-    public Contract(string contractName, float timeToComplete, int assignedWorkers, int amountAwarded, int contractType)
+    private Guid guid;
+    
+    public Contract(string contractName, float timeToComplete, int amountAwarded, int contractType)
     {
         this.contractName = contractName;
         this.timeToComplete = timeToComplete;
-        this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
@@ -38,20 +42,19 @@ public class Contract
         return this.timeToComplete;
     }
 
-    //add assigned workers
-    public void AddAssignedWorkers()
-    {
-        this.assignedWorkers += 1;
+    // Assign workers
+    public void AssignWorker(string workerId) {
+        assignedWorkers.Add(workerId);
     }
 
-    //remove assigned workers
-    public void RemoveAssignedWorkers()
-    {
-        this.assignedWorkers -= 1;
+    // Remove workers from being assigned
+    public bool UnassignWorker(string workerId) {
+        return assignedWorkers.Remove(workerId);
+
     }
 
     //get assigned workers
-    public int GetAssignedWorkers()
+    public List<string> GetAssignedWorkers()
     {
         return this.assignedWorkers;
     }

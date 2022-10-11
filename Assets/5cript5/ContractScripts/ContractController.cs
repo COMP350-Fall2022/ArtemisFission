@@ -12,9 +12,9 @@ public class ContractController
     }
 
     //Creates a contract and return string id
-    public string CreateNewContract(string contractName, float timeToComplete, int assignedWorkers, int amountAwarded, int contractType)
+    public string CreateNewContract(string contractName, float timeToComplete, int amountAwarded, int contractType)
     {
-        Contract c = new Contract(contractName, timeToComplete, assignedWorkers, amountAwarded, contractType);
+        Contract c = new Contract(contractName, timeToComplete, amountAwarded, contractType);
         contracts.Add(c.GetGuid(), c);
         return c.GetGuid();
     }
