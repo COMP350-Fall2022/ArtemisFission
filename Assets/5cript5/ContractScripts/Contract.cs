@@ -5,7 +5,6 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 using System;
 
-
 public class Contract
 {
     internal string contractName;
@@ -51,6 +50,7 @@ public class Contract
     // Remove workers from being assigned
     public bool UnassignWorker(string workerId) {
         return assignedWorkers.Remove(workerId);
+
     }
 
     //get assigned workers

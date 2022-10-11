@@ -14,7 +14,6 @@ public class ContractGenerator : MonoBehaviour
     public void NewContract()
     {
         Debug.Log("Contract coming up");
-
         guid = controller.CreateNewContract("Contract " + Random.Range(0, 11), Random.Range(100.0f, 200.0f), 0, Random.Range(0, 3));
     }
 
