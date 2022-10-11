@@ -31,6 +31,11 @@ public class ContractController
         return contracts[guid];
     }
 
+    // public List<Contract> GetAllContracts()
+    // {
+    //     return contracts.Values;
+    // }
+
     //Prints a contract to console
     public void LogContract(string guid)
     {
