@@ -209,6 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 135649924}
   - component: {fileID: 135649925}
+  - component: {fileID: 135649926}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -234,7 +235,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.000091552734}
-  m_SizeDelta: {x: -0.0019836, y: 48.76001}
+  m_SizeDelta: {x: -0.0019836, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &135649925
 MonoBehaviour:
@@ -262,6 +263,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &135649926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135649923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &556737449
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ContentPanel: {fileID: 135649923}
   ListItemPrefab: {fileID: 1727787076868745197, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-  gc: {fileID: 1947015391}
+  gameController: {fileID: 1947015391}
 --- !u!1 &1108173779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,8 +1232,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 108010474}
   m_HandleRect: {fileID: 108010473}
   m_Direction: 2
-  m_Value: 1.0000025
-  m_Size: 0.90817326
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

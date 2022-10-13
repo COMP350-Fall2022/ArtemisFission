@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 //Contract controller
 public class ContractController
@@ -31,10 +32,15 @@ public class ContractController
         return contracts[guid];
     }
 
-    // public List<Contract> GetAllContracts()
-    // {
-    //     return contracts.Values;
-    // }
+    public List<Contract> GetAllContracts()
+    {
+        return contracts.Values.ToList();
+    }
+
+    public int GetContractCount()
+    {
+        return contracts.Count;
+    }
 
     //Prints a contract to console
     public void LogContract(string guid)

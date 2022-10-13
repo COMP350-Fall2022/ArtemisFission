@@ -8,26 +8,14 @@ public class ListController : MonoBehaviour
     public GameObject ContentPanel;
     public GameObject ListItemPrefab;
 
-    public GameController gc;
-
-    // public ContractController cc;
-    private List<Contract> contracts = new List<Contract>();
+    public GameController gameController;
+    private List<Contract> contracts;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        contracts.Add(new Contract("contract1", 19, 100, 0));
-        contracts.Add(new Contract("contract2", 20, 100, 0));
-        contracts.Add(new Contract("contract3", 22, 100, 0));
-        contracts.Add(new Contract("contract4", 15, 100, 0));
-        contracts.Add(new Contract("contract5", 15, 100, 0));
-        contracts.Add(new Contract("contract6", 15, 100, 0));
-        contracts.Add(new Contract("contract7", 15, 100, 0));
-
-
-        Debug.Log("Contracts added");
-
+        contracts = gameController.contractController.GetAllContracts();
         foreach (Contract contract in contracts)
         {
             GameObject newContract = Instantiate(ListItemPrefab) as GameObject;
@@ -35,7 +23,21 @@ public class ListController : MonoBehaviour
             controller.Name.text = contract.GetName();
             controller.Description.text = contract.GetGuid();
             newContract.transform.parent = ContentPanel.transform;
-            // newContract.transform.localScale = Vector3.one;
+        }
+    }
+
+    void Update() {
+        // compare
+        if (contracts.Count != gameController.contractController.GetContractCount()) {
+
+            contracts = gameController.contractController.GetAllContracts();
+            foreach (Contract contract in contracts) {
+                GameObject newContract = Instantiate(ListItemPrefab) as GameObject;
+                ListItemController controller = newContract.GetComponent<ListItemController>();
+                controller.Name.text = contract.GetName();
+                controller.Description.text = contract.GetGuid();
+                newContract.transform.parent = ContentPanel.transform;
+            }
         }
     }
 }
