@@ -5,8 +5,8 @@ using UnityEngine;
 // A class to control and coordinate events between controllers and the UI
 public class GameController : MonoBehaviour
 {
-    EmployeeController employeeController = new EmployeeController(10);
-    ContractController contractController = new ContractController();
+    public EmployeeController employeeController = new EmployeeController(10);
+    public ContractController contractController = new ContractController();
 
     // Update is called once per frame
     void Update()
