@@ -19,6 +19,10 @@ public class GameController : MonoBehaviour
         contractController.CreateNewContract("Contract7", 100, 10, 1);
         contractController.CreateNewContract("Contract8", 100, 10, 1);
         contractController.CreateNewContract("Contract9", 100, 10, 1);
+
+        employeeController.CreateNewEmployee("Andrew Graves", 10000, null);
+        employeeController.CreateNewEmployee("Andrew Graves2", 10000, null);
+        employeeController.CreateNewEmployee("Andrew Graves3", 10000, null);
     }
 
 
