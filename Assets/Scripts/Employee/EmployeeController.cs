@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 // Controller for all employees in the game. Keeps track of all active employees.
 public class EmployeeController
@@ -25,6 +26,16 @@ public class EmployeeController
     // Deletes or "fires" an employee
     public bool FireEmployee(string id) {
         return employees.Remove(id);
+    }
+
+    //TODO: Go back and adjust to system where we only return active employees
+    public List<Employee> GetEmployees() {
+        return employees.Values.ToList();
+    }
+
+    // Returns the number of employees
+    public int GetEmployeeCount() {
+        return employees.Count;
     }
 
     // Print out all employees to the log. For convience purposes.

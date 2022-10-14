@@ -35,7 +35,7 @@ public class Contract
     {
         return this.contractName;
     }
-  
+    
     //Get time to complete
     public float GetTime()
     {
