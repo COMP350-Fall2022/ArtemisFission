@@ -13,13 +13,16 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: Load Cache
+      - name: Checkout
+        uses: actions/checkout@v2.4.2
+
+      - name: Load from Cache
         uses: actions/cache@v2
         with:
-          path: path/to/your/project/Library
-          key: Library-MyProjectName-TargetPlatform
+          path: Library
+          key: Library-ArtemisFission-WebGL
           restore-keys: |
-            Library-MyProjectName-
+            Library-ArtemisFission-
             Library-
 
       - name: Run Builder
@@ -30,6 +33,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
+          # unityVersion: 2021.3.8f1
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
