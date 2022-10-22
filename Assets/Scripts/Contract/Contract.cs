@@ -12,15 +12,18 @@ public class Contract
     List<string> assignedWorkers;
     int amountAwarded;
     int contractType;
+    float elapsedTime;
 
     private Guid guid;
-    
-    public Contract(string contractName, float timeToComplete, int amountAwarded, int contractType)
+
+    public Contract(string contractName, float timeToComplete, List<string> assignedWorkers, int amountAwarded, int contractType, float elapsedTime)
     {
         this.contractName = contractName;
         this.timeToComplete = timeToComplete;
+        this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
+        this.elapsedTime = elapsedTime;
         this.guid = Guid.NewGuid();
     }
 
@@ -35,21 +38,21 @@ public class Contract
     {
         return this.contractName;
     }
-    
+
     //Get time to complete
-    public float GetTime()
+    public float GetTimeToComplete()
     {
         return this.timeToComplete;
     }
 
     // Assign workers
     public void AssignWorker(string workerId) {
-        assignedWorkers.Add(workerId);
+        this.assignedWorkers.Add(workerId);
     }
 
     // Remove workers from being assigned
     public bool UnassignWorker(string workerId) {
-        return assignedWorkers.Remove(workerId);
+        return this.assignedWorkers.Remove(workerId);
 
     }
 
@@ -75,6 +78,12 @@ public class Contract
     public string GetGuid()
     {
         return this.guid.ToString();
+    }
+
+    //set elapsed time
+    public void SetElapsedTime()
+    {
+        this.elapsedTime = elapsedTime + Time.deltaTime;
     }
 }
 

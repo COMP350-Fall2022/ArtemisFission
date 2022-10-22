@@ -13,9 +13,9 @@ public class ContractController
     }
 
     //Creates a contract and return string id
-    public string CreateNewContract(string contractName, float timeToComplete, int amountAwarded, int contractType)
+    public string CreateNewContract(string contractName, float timeToComplete, List<string> assignedWorkers, int amountAwarded, int contractType, float elapsedTime)
     {
-        Contract c = new Contract(contractName, timeToComplete, amountAwarded, contractType);
+        Contract c = new Contract(contractName, timeToComplete, assignedWorkers, amountAwarded, contractType, elapsedTime);
         contracts.Add(c.GetGuid(), c);
         return c.GetGuid();
     }
@@ -32,11 +32,13 @@ public class ContractController
         return contracts[guid];
     }
 
+    //Return all contracts as a list
     public List<Contract> GetAllContracts()
     {
         return contracts.Values.ToList();
     }
 
+    //Return contract count
     public int GetContractCount()
     {
         return contracts.Count;
@@ -48,7 +50,7 @@ public class ContractController
         Contract c = contracts[guid];
 
         Debug.Log("Contract Name: " + c.GetName());
-        Debug.Log("Contract Time: " + c.GetTime());
+        Debug.Log("Contract Time to Complete: " + c.GetTimeToComplete());
         Debug.Log("Assigned Workers: " + c.GetAssignedWorkers());
         Debug.Log("Award: " + c.GetAward());
         Debug.Log("Contract Type: " + c.GetContractType());
@@ -60,10 +62,25 @@ public class ContractController
         foreach(KeyValuePair<string, Contract> entry in contracts)
         {
             Debug.Log("Contract Name: " + entry.Value.GetName());
-            Debug.Log("Contract Time: " + entry.Value.GetTime());
+            Debug.Log("Contract Time to Complete: " + entry.Value.GetTimeToComplete());
             Debug.Log("Assigned Workers: " + entry.Value.GetAssignedWorkers());
             Debug.Log("Award: " + entry.Value.GetAward());
             Debug.Log("Contract Type: " + entry.Value.GetContractType());
+        }
+    }
+
+    public void ContractProgression(string guid)
+    {
+        Contract c = contracts[guid];
+
+        if (c.GetAssignedWorkers() != null)
+        {
+            c.SetElapsedTime();
+        }
+
+        else
+        {
+            Debug.Log("No Progress");
         }
     }
 }
