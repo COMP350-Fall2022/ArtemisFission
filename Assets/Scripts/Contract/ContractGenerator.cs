@@ -11,13 +11,16 @@ public class ContractGenerator : MonoBehaviour
     List<string> workers = new List<string>()
     {
         "John",
+        "Alex",
+        "Andrew",
+        "Francis"
     };
     
     //Generate a contract
     public void NewContract()
     {
         Debug.Log("Contract coming up");
-        guid = controller.CreateNewContract("Contract " + Random.Range(0, 11), Random.Range(100.0f, 200.0f), workers, 0, Random.Range(0, 3), 0);
+        guid = controller.CreateNewContract("Contract " + Random.Range(0, 11), 50.0f, workers, 0, Random.Range(0, 3), 0);
         c = controller.GetContract(guid);
         controller.LogContract(guid);
     }
@@ -30,5 +33,6 @@ public class ContractGenerator : MonoBehaviour
     void Update()
     {
         controller.ContractProgression(guid);
+        controller.ContractCompletion(guid);
     }
 }

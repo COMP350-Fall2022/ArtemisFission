@@ -69,6 +69,7 @@ public class ContractController
         }
     }
 
+    //progress contract if workers are assigned
     public void ContractProgression(string guid)
     {
         Contract c = contracts[guid];
@@ -76,11 +77,19 @@ public class ContractController
         if (c.GetAssignedWorkers() != null)
         {
             c.SetElapsedTime();
+            Debug.Log("progressing" + c.GetElapsedTime());
         }
+    }
 
-        else
+    //check for contract completion
+    public void ContractCompletion(string guid)
+    {
+        Contract c = contracts[guid];
+
+        if (c.GetTimeToComplete() <= c.GetElapsedTime())
         {
-            Debug.Log("No Progress");
+            c.RemoveWorkers();
+            Debug.Log("Complete");
         }
     }
 }

@@ -56,10 +56,22 @@ public class Contract
 
     }
 
+    //Remove all workers from contract
+    public void RemoveWorkers()
+    {
+        this.assignedWorkers.Clear();
+    }
+
     //get assigned workers
     public List<string> GetAssignedWorkers()
     {
         return this.assignedWorkers;
+    }
+
+    //get amount of assigned workers
+    public int GetAmountOfAssignedWorkers()
+    {
+        return this.assignedWorkers.Count;
     }
 
     //get amount awarded
@@ -83,7 +95,13 @@ public class Contract
     //set elapsed time
     public void SetElapsedTime()
     {
-        this.elapsedTime = elapsedTime + Time.deltaTime;
+        this.elapsedTime = elapsedTime + (Time.deltaTime * assignedWorkers.Count);
+    }
+
+    //get elapsed time
+    public float GetElapsedTime()
+    {
+        return this.elapsedTime;
     }
 }
 
