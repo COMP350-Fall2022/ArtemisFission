@@ -8,22 +8,20 @@ using System;
 public class Contract
 {
     internal string contractName;
-    float timeToComplete;
+    float totalEffort;
     List<string> assignedWorkers;
     int amountAwarded;
     int contractType;
-    float elapsedTime;
 
     private Guid guid;
 
-    public Contract(string contractName, float timeToComplete, List<string> assignedWorkers, int amountAwarded, int contractType, float elapsedTime)
+    public Contract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
     {
         this.contractName = contractName;
-        this.timeToComplete = timeToComplete;
+        this.totalEffort = totalEffort;
         this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
-        this.elapsedTime = elapsedTime;
         this.guid = Guid.NewGuid();
     }
 
@@ -39,10 +37,16 @@ public class Contract
         return this.contractName;
     }
 
-    //Get time to complete
-    public float GetTimeToComplete()
+    //Get total effort
+    public float GetTotalEffort()
     {
-        return this.timeToComplete;
+        return this.totalEffort;
+    }
+
+    //set total effort
+    public void SetTotalEffort(float effort)
+    {
+        this.totalEffort = totalEffort - effort;
     }
 
     // Assign workers
@@ -90,18 +94,6 @@ public class Contract
     public string GetGuid()
     {
         return this.guid.ToString();
-    }
-
-    //set elapsed time
-    public void SetElapsedTime()
-    {
-        this.elapsedTime = elapsedTime + (Time.deltaTime * assignedWorkers.Count);
-    }
-
-    //get elapsed time
-    public float GetElapsedTime()
-    {
-        return this.elapsedTime;
     }
 }
 

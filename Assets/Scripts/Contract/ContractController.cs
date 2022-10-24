@@ -13,9 +13,9 @@ public class ContractController
     }
 
     //Creates a contract and return string id
-    public string CreateNewContract(string contractName, float timeToComplete, List<string> assignedWorkers, int amountAwarded, int contractType, float elapsedTime)
+    public string CreateNewContract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
     {
-        Contract c = new Contract(contractName, timeToComplete, assignedWorkers, amountAwarded, contractType, elapsedTime);
+        Contract c = new Contract(contractName, totalEffort, assignedWorkers, amountAwarded, contractType);
         contracts.Add(c.GetGuid(), c);
         return c.GetGuid();
     }
@@ -50,7 +50,7 @@ public class ContractController
         Contract c = contracts[guid];
 
         Debug.Log("Contract Name: " + c.GetName());
-        Debug.Log("Contract Time to Complete: " + c.GetTimeToComplete());
+        Debug.Log("Contract Time to Complete: " + c.GetTotalEffort());
         Debug.Log("Assigned Workers: " + c.GetAssignedWorkers());
         Debug.Log("Award: " + c.GetAward());
         Debug.Log("Contract Type: " + c.GetContractType());
@@ -62,7 +62,7 @@ public class ContractController
         foreach(KeyValuePair<string, Contract> entry in contracts)
         {
             Debug.Log("Contract Name: " + entry.Value.GetName());
-            Debug.Log("Contract Time to Complete: " + entry.Value.GetTimeToComplete());
+            Debug.Log("Contract Time to Complete: " + entry.Value.GetTotalEffort());
             Debug.Log("Assigned Workers: " + entry.Value.GetAssignedWorkers());
             Debug.Log("Award: " + entry.Value.GetAward());
             Debug.Log("Contract Type: " + entry.Value.GetContractType());
@@ -76,8 +76,9 @@ public class ContractController
 
         if (c.GetAssignedWorkers() != null)
         {
-            c.SetElapsedTime();
-            Debug.Log("progressing" + c.GetElapsedTime());
+            float effort = 1 * (c.GetAmountOfAssignedWorkers());
+            c.SetTotalEffort(effort);
+            Debug.Log("progressing" + c.GetTotalEffort());
         }
     }
 
@@ -86,7 +87,7 @@ public class ContractController
     {
         Contract c = contracts[guid];
 
-        if (c.GetTimeToComplete() <= c.GetElapsedTime())
+        if (c.GetTotalEffort() <= 0)
         {
             c.RemoveWorkers();
             Debug.Log("Complete");
