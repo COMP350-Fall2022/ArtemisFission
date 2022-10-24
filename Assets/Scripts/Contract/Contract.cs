@@ -8,17 +8,18 @@ using System;
 public class Contract
 {
     internal string contractName;
-    float timeToComplete;
+    float totalEffort;
     List<string> assignedWorkers;
     int amountAwarded;
     int contractType;
 
     private Guid guid;
-    
-    public Contract(string contractName, float timeToComplete, int amountAwarded, int contractType)
+
+    public Contract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
     {
         this.contractName = contractName;
-        this.timeToComplete = timeToComplete;
+        this.totalEffort = totalEffort;
+        this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
@@ -35,28 +36,46 @@ public class Contract
     {
         return this.contractName;
     }
-    
-    //Get time to complete
-    public float GetTime()
+
+    //Get total effort
+    public float GetTotalEffort()
     {
-        return this.timeToComplete;
+        return this.totalEffort;
+    }
+
+    //set total effort
+    public void SetTotalEffort(float effort)
+    {
+        this.totalEffort = totalEffort - effort;
     }
 
     // Assign workers
     public void AssignWorker(string workerId) {
-        assignedWorkers.Add(workerId);
+        this.assignedWorkers.Add(workerId);
     }
 
     // Remove workers from being assigned
     public bool UnassignWorker(string workerId) {
-        return assignedWorkers.Remove(workerId);
+        return this.assignedWorkers.Remove(workerId);
 
+    }
+
+    //Remove all workers from contract
+    public void RemoveWorkers()
+    {
+        this.assignedWorkers.Clear();
     }
 
     //get assigned workers
     public List<string> GetAssignedWorkers()
     {
         return this.assignedWorkers;
+    }
+
+    //get amount of assigned workers
+    public int GetAmountOfAssignedWorkers()
+    {
+        return this.assignedWorkers.Count;
     }
 
     //get amount awarded
