@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
     void Update()
     {
         // handle tick behavior right here
-        this.globalTime = this.globalTime.AddTicks(1);
+        this.globalTime = this.globalTime.AddTicks(1000);
+        contractController.Tick();
+        Debug.Log("globalTime" + this.globalTime.ToString());
     }
 }

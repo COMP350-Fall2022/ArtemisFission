@@ -10,7 +10,7 @@ public class Contract
     internal string contractName;
     float totalEffort;
     float completedWork;
-    List<string> assignedWorkers;
+    List<string> assignedWorkers = new List<string>();
     int amountAwarded;
     int contractType;
 
@@ -20,7 +20,11 @@ public class Contract
     {
         this.contractName = contractName;
         this.totalEffort = totalEffort;
-        this.assignedWorkers = assignedWorkers;
+        // TODO: This needs to be addressed. Workers will not be assigned to contracts when they are created so we do not need this.
+        // if (assignedWorkers != null) {
+        //     this.assignedWorkers = new List<string>();
+        // }
+        // this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
@@ -93,7 +97,8 @@ public class Contract
 
     public bool IsActive()
     {
-        return GetAssignedWorkers().Count > 0;
+        // Debug.Log("Assigned Workers: " + GetAssignedWorkers().ToString());
+        return GetAmountOfAssignedWorkers() > 0;
     }
 
     public void IncrementWork(float work)

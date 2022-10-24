@@ -71,16 +71,15 @@ public class ContractController
 
     public void Tick()
     {
-        foreach (var contract in contracts.Values)
+        foreach (KeyValuePair<string, Contract> entry in contracts) 
         {
-            // increment the contract value
-            if (contract.IsActive()) {
-                contract.IncrementWork(contract.GetAmountOfAssignedWorkers());
+            if (entry.Value.IsActive()) {
+                entry.Value.IncrementWork(entry.Value.GetAmountOfAssignedWorkers());
             }
 
-            if (contract.IsComplete()) {
+            if (entry.Value.IsComplete()) {
                 // whatever we do when they are done
-                contract.RemoveWorkers();
+                entry.Value.RemoveWorkers();
             }
         }
     }
