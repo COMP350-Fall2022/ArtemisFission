@@ -66,4 +66,15 @@ public class ContractController
             Debug.Log("Contract Type: " + entry.Value.GetContractType());
         }
     }
+
+    public void Tick()
+    {
+        foreach (var contract in contracts.Values)
+        {
+            // increment the contract value
+            if (contract.IsActive()) {
+                contract.IncrementWork();
+            }
+        }
+    }
 }

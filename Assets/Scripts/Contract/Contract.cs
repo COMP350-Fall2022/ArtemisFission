@@ -8,17 +8,17 @@ using System;
 public class Contract
 {
     internal string contractName;
-    float timeToComplete;
+    float workToComplete;
     List<string> assignedWorkers;
     int amountAwarded;
     int contractType;
 
     private Guid guid;
     
-    public Contract(string contractName, float timeToComplete, int amountAwarded, int contractType)
+    public Contract(string contractName, float workToComplete, int amountAwarded, int contractType)
     {
         this.contractName = contractName;
-        this.timeToComplete = timeToComplete;
+        this.workToComplete = workToComplete;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
@@ -37,9 +37,9 @@ public class Contract
     }
     
     //Get time to complete
-    public float GetTime()
+    public float GetWorkToComplete()
     {
-        return this.timeToComplete;
+        return this.workToComplete;
     }
 
     // Assign workers
@@ -75,6 +75,16 @@ public class Contract
     public string GetGuid()
     {
         return this.guid.ToString();
+    }
+
+    public bool IsActive()
+    {
+        return GetAssignedWorkers().Count > 0;
+    }
+
+    public void IncrementWork()
+    {
+        workToComplete++;
     }
 }
 

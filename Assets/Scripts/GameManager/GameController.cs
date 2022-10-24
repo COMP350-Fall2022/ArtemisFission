@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 // A class to control and coordinate events between controllers and the UI
 public class GameController : MonoBehaviour
 {
     public EmployeeController employeeController = new EmployeeController(10);
     public ContractController contractController = new ContractController();
+    public DateTime globalTime = new DateTime();
 
     // start
     void Start() {
@@ -30,5 +30,6 @@ public class GameController : MonoBehaviour
     void Update()
     {
         // handle tick behavior right here
+        this.globalTime = this.globalTime.AddTicks(1);
     }
 }
