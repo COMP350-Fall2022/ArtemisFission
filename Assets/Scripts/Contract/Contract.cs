@@ -8,17 +8,19 @@ using System;
 public class Contract
 {
     internal string contractName;
-    float workToComplete;
+    float totalEffort;
+    float completedWork;
     List<string> assignedWorkers;
     int amountAwarded;
     int contractType;
 
     private Guid guid;
-    
-    public Contract(string contractName, float workToComplete, int amountAwarded, int contractType)
+
+    public Contract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
     {
         this.contractName = contractName;
-        this.workToComplete = workToComplete;
+        this.totalEffort = totalEffort;
+        this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
@@ -35,28 +37,40 @@ public class Contract
     {
         return this.contractName;
     }
-    
-    //Get time to complete
-    public float GetWorkToComplete()
+
+    //Get total effort
+    public float GetTotalEffort()
     {
-        return this.workToComplete;
+        return this.totalEffort;
     }
 
     // Assign workers
     public void AssignWorker(string workerId) {
-        assignedWorkers.Add(workerId);
+        this.assignedWorkers.Add(workerId);
     }
 
     // Remove workers from being assigned
     public bool UnassignWorker(string workerId) {
-        return assignedWorkers.Remove(workerId);
+        return this.assignedWorkers.Remove(workerId);
 
+    }
+
+    //Remove all workers from contract
+    public void RemoveWorkers()
+    {
+        this.assignedWorkers.Clear();
     }
 
     //get assigned workers
     public List<string> GetAssignedWorkers()
     {
         return this.assignedWorkers;
+    }
+
+    //get amount of assigned workers
+    public int GetAmountOfAssignedWorkers()
+    {
+        return this.assignedWorkers.Count;
     }
 
     //get amount awarded
@@ -82,9 +96,19 @@ public class Contract
         return GetAssignedWorkers().Count > 0;
     }
 
-    public void IncrementWork()
+    public void IncrementWork(float work)
     {
-        workToComplete++;
+        completedWork += work;
+    }
+
+    public bool IsComplete()
+    {
+        if (completedWork >= totalEffort)
+        {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
