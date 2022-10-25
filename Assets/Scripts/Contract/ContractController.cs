@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
-//Contract controller
 public class ContractController
 {
     Dictionary<string, Contract> contracts;
@@ -12,7 +12,6 @@ public class ContractController
         contracts = new Dictionary<string, Contract>();
     }
 
-    //Creates a contract and return string id
     public string CreateNewContract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
     {
         Contract c = new Contract(contractName, totalEffort, assignedWorkers, amountAwarded, contractType);
@@ -20,31 +19,44 @@ public class ContractController
         return c.GetGuid();
     }
 
-    //Removes a contract
     public void RemoveContract(string guid)
     {
         contracts.Remove(guid);
     }
 
-    //Return a contract
     public Contract GetContract(string guid)
     {
         return contracts[guid];
     }
 
-    //Return all contracts as a list
     public List<Contract> GetAllContracts()
     {
         return contracts.Values.ToList();
     }
 
-    //Return contract count
     public int GetContractCount()
     {
         return contracts.Count;
     }
 
-    //Prints a contract to console
+    public bool AssignEmployee(string contractGuid, string employeeGuid) {
+        Contract c = GetContract(contractGuid);
+        if (!c.IsComplete()) {
+            // TODO: We want to check with the employee controller if the ID actually exists in the future?
+            c.AssignWorker(employeeGuid);
+            return true;
+        }
+        return false;
+    }
+
+    public bool RemoveEmployee(string contractGuid, string employeeGuid) {
+        Contract c = GetContract(contractGuid);
+        if (c.GetAmountOfAssignedWorkers() > 0) {
+            return c.UnassignWorker(employeeGuid);
+        }
+        return false;
+    }
+
     public void LogContract(string guid)
     {
         Contract c = contracts[guid];
@@ -69,18 +81,25 @@ public class ContractController
         }
     }
 
+    public DateTime timeOfLastTick = DateTime.Now;
+    public int TICK_THRESHOLD = 100000;
+
     public void Tick()
     {
-        foreach (KeyValuePair<string, Contract> entry in contracts) 
-        {
-            if (entry.Value.IsActive()) {
-                entry.Value.IncrementWork(entry.Value.GetAmountOfAssignedWorkers());
-            }
+        if (DateTime.Now.Ticks - timeOfLastTick.Ticks >= TICK_THRESHOLD) {
+            Debug.Log("Ticking");
+            foreach (KeyValuePair<string, Contract> entry in contracts) 
+            {
+                if (entry.Value.IsActive()) {
+                    entry.Value.IncrementWork(entry.Value.GetAmountOfAssignedWorkers());
+                    // subtract money for every worker we find
+                }
 
-            if (entry.Value.IsComplete()) {
-                // whatever we do when they are done
-                entry.Value.RemoveWorkers();
+                if (entry.Value.IsComplete()) {
+                    entry.Value.RemoveWorkers();
+                }
             }
+            timeOfLastTick = DateTime.Now;
         }
     }
 }

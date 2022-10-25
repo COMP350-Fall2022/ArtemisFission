@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour
     public ContractController contractController = new ContractController();
     public DateTime globalTime = new DateTime();
 
-    // start
     void Start() {
         contractController.CreateNewContract("Contract1", 100, null, 10, 1);
         contractController.CreateNewContract("Contract2", 100, null, 10, 1);
@@ -25,13 +24,11 @@ public class GameController : MonoBehaviour
         employeeController.CreateNewEmployee("Andrew Graves3", 10000, null);
     }
 
-
     // Update is called once per frame
     void Update()
     {
         // handle tick behavior right here
         this.globalTime = this.globalTime.AddTicks(1000);
         contractController.Tick();
-        Debug.Log("globalTime" + this.globalTime.ToString());
     }
 }

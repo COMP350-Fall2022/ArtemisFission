@@ -56,7 +56,6 @@ public class Contract
     // Remove workers from being assigned
     public bool UnassignWorker(string workerId) {
         return this.assignedWorkers.Remove(workerId);
-
     }
 
     //Remove all workers from contract
