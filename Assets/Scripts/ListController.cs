@@ -16,9 +16,6 @@ public class ListController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        Thread.Sleep(1000);
-
         contracts = gameController.contractController.GetAllContracts();
         foreach (Contract contract in contracts)
         {
