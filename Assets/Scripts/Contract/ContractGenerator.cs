@@ -23,13 +23,13 @@ public class ContractGenerator : MonoBehaviour
         controller.LogContract(guid);
     }
 
-    void Start()
-    {
-        NewContract();
-    }
-    void Update()
-    {
-        controller.ContractProgression(guid);
-        controller.ContractCompletion(guid);
-    }
+    // void Start()
+    // {
+    //     NewContract();
+    // }
+    // void Update()
+    // {
+    //     controller.ContractProgression(guid);
+    //     controller.ContractCompletion(guid);
+    // }
 }

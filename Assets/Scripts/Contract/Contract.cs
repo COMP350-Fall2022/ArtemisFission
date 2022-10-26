@@ -9,7 +9,8 @@ public class Contract
 {
     internal string contractName;
     float totalEffort;
-    List<string> assignedWorkers;
+    float completedWork;
+    List<string> assignedWorkers = new List<string>();
     int amountAwarded;
     int contractType;
 
@@ -19,7 +20,11 @@ public class Contract
     {
         this.contractName = contractName;
         this.totalEffort = totalEffort;
-        this.assignedWorkers = assignedWorkers;
+        // TODO: This needs to be addressed. Workers will not be assigned to contracts when they are created so we do not need this.
+        // if (assignedWorkers != null) {
+        //     this.assignedWorkers = new List<string>();
+        // }
+        // this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
@@ -43,12 +48,6 @@ public class Contract
         return this.totalEffort;
     }
 
-    //set total effort
-    public void SetTotalEffort(float effort)
-    {
-        this.totalEffort = totalEffort - effort;
-    }
-
     // Assign workers
     public void AssignWorker(string workerId) {
         this.assignedWorkers.Add(workerId);
@@ -57,7 +56,6 @@ public class Contract
     // Remove workers from being assigned
     public bool UnassignWorker(string workerId) {
         return this.assignedWorkers.Remove(workerId);
-
     }
 
     //Remove all workers from contract
@@ -94,6 +92,27 @@ public class Contract
     public string GetGuid()
     {
         return this.guid.ToString();
+    }
+
+    public bool IsActive()
+    {
+        // Debug.Log("Assigned Workers: " + GetAssignedWorkers().ToString());
+        return GetAmountOfAssignedWorkers() > 0;
+    }
+
+    public void IncrementWork(float work)
+    {
+        completedWork += work;
+    }
+
+    public bool IsComplete()
+    {
+        if (completedWork >= totalEffort)
+        {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
