@@ -20,11 +20,6 @@ public class Contract
     {
         this.contractName = contractName;
         this.totalEffort = totalEffort;
-        // TODO: This needs to be addressed. Workers will not be assigned to contracts when they are created so we do not need this.
-        // if (assignedWorkers != null) {
-        //     this.assignedWorkers = new List<string>();
-        // }
-        // this.assignedWorkers = assignedWorkers;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
