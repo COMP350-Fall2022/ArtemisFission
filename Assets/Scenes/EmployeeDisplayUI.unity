@@ -380,8 +380,9 @@ GameObject:
   - component: {fileID: 582479685}
   - component: {fileID: 582479687}
   - component: {fileID: 582479686}
+  - component: {fileID: 582479688}
   m_Layer: 5
-  m_Name: Name Text
+  m_Name: nameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,6 +507,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582479684}
   m_CullTransparentMesh: 1
+--- !u!114 &582479688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582479684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4454b893ad41f488666fd1de73e397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  salaryText: {fileID: 0}
+  moraleText: {fileID: 0}
+  speedText: {fileID: 0}
+  techText: {fileID: 0}
 --- !u!1 &612053947
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +536,7 @@ GameObject:
   - component: {fileID: 612053950}
   - component: {fileID: 612053949}
   m_Layer: 5
-  m_Name: Salary
+  m_Name: salaryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,7 +755,7 @@ GameObject:
   - component: {fileID: 933829138}
   - component: {fileID: 933829137}
   m_Layer: 5
-  m_Name: Speed Stat
+  m_Name: speedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -869,7 +887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1438482053}
-  - component: {fileID: 1438482052}
+  - component: {fileID: 1438482054}
   m_Layer: 0
   m_Name: StatManager
   m_TagString: Untagged
@@ -877,7 +895,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1438482052
+--- !u!4 &1438482053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438482051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.084818, y: -0.80150473, z: -1.9579608}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1438482054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -894,21 +927,6 @@ MonoBehaviour:
   moraleText: {fileID: 0}
   speedText: {fileID: 0}
   techText: {fileID: 0}
---- !u!4 &1438482053
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438482051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.084818, y: -0.80150473, z: -1.9579608}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1556855415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1062,7 @@ GameObject:
   - component: {fileID: 1613532410}
   - component: {fileID: 1613532409}
   m_Layer: 5
-  m_Name: Morale Stat
+  m_Name: moraleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1263,7 +1281,7 @@ GameObject:
   - component: {fileID: 1992527503}
   - component: {fileID: 1992527502}
   m_Layer: 5
-  m_Name: Tech Stat
+  m_Name: techText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
