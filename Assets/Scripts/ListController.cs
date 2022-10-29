@@ -22,7 +22,11 @@ public class ListController : MonoBehaviour
             GameObject newContract = Instantiate(ListItemPrefab) as GameObject;
             ListItemController controller = newContract.GetComponent<ListItemController>();
             controller.Name.text = contract.GetName();
-            controller.Description.text = contract.GetGuid();
+            // controller.Description.text = contract.GetGuid();
+            controller.Id.text = contract.GetGuid();
+            controller.AssignedEmployees.text = contract.GetAssignedWorkers().ToString();
+            controller.ContractProgress.text = contract.GetTotalEffort() + " / " + contract.GetCompletedWork();
+            controller.RequiredParts.text = "Placeholder";
             newContract.transform.parent = ContentPanel.transform;
         }
     }
@@ -37,7 +41,11 @@ public class ListController : MonoBehaviour
                     GameObject newContract = Instantiate(ListItemPrefab) as GameObject;
                     ListItemController controller = newContract.GetComponent<ListItemController>();
                     controller.Name.text = contract.GetName();
-                    controller.Description.text = contract.GetGuid();
+                    controller.Id.text = contract.GetGuid();
+                    controller.AssignedEmployees.text = contract.GetAssignedWorkers().ToString();
+                    controller.ContractProgress.text = contract.GetCompletedWork() + " / " + contract.GetTotalEffort();
+                    controller.RequiredParts.text = "Placeholder";
+                    // controller.Description.text = contract.GetGuid();
                     newContract.transform.parent = ContentPanel.transform;
                 }
             }

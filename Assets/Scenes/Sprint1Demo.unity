@@ -383,6 +383,14 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 1947015391}
+    - target: {fileID: 7037302513116707420, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_Name
+      value: Contract Progress
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509060078348307755, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_text
+      value: Contract progress
+      objectReference: {fileID: 0}
     - target: {fileID: 7838901508040848512, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -417,7 +425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7838901508040848512, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7838901508040848512, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
       propertyPath: m_LocalPosition.x

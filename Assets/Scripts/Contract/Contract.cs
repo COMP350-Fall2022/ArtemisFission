@@ -48,6 +48,10 @@ public class Contract
         return this.totalEffort;
     }
 
+    public float GetCompletedWork() {
+        return this.completedWork;
+    }
+
     // Assign workers
     public void AssignWorker(string workerId) {
         this.assignedWorkers.Add(workerId);
