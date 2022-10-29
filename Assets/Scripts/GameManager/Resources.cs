@@ -8,17 +8,22 @@ public class Resources
     float workingHours;
     Dictionary<string, int> parts = new Dictionary<string, int>();
     float time;
-    float morale;
+    Dictionary<string, float> morale = new Dictionary<string, float>();
 
-    public Resources(float money, float workingHours, Dictionary<string, int> parts, float time, float morale)
+    public Resources()
     {
-        this.money = money;
-        this.workingHours = workingHours;
-        this.parts = parts;
-        this.time = time;
-        this.morale = morale;
+        this.money = 0;
+        this.workingHours = 0;
+        this.parts = new Dictionary<string, int>();
+        this.time = 0;
+        this.morale = new Dictionary<string, float>();
     }
 
+    public Resources CreateResources()
+    {
+        Resources r = new Resources();
+        return r;
+    }
     public void SetMoney(float newMoney)
     {
         this.money = newMoney;
@@ -58,12 +63,12 @@ public class Resources
         return this.time;
     }
 
-    public void SetMorale(float newMorale)
+    public void SetEmployeeMorale(string employeeID, float newMorale)
     {
-        this.morale = newMorale;
+        this.morale[employeeID] = newMorale;
     }
 
-    public float GetMorale()
+    public Dictionary<string, float> GetAllEmployeesMorale()
     {
         return this.morale;
     }
