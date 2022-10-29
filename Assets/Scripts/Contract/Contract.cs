@@ -16,7 +16,7 @@ public class Contract
 
     private Guid guid;
 
-    public Contract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
+    public Contract(string contractName, float totalEffort, int amountAwarded, int contractType)
     {
         this.contractName = contractName;
         this.totalEffort = totalEffort;
