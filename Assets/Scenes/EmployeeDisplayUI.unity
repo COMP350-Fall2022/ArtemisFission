@@ -380,7 +380,6 @@ GameObject:
   - component: {fileID: 582479685}
   - component: {fileID: 582479687}
   - component: {fileID: 582479686}
-  - component: {fileID: 582479688}
   m_Layer: 5
   m_Name: nameText
   m_TagString: Untagged
@@ -428,9 +427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Charon
-
-'
+  m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
   m_sharedMaterial: {fileID: -6113601310215722490, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
@@ -507,23 +504,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582479684}
   m_CullTransparentMesh: 1
---- !u!114 &582479688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582479684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db4454b893ad41f488666fd1de73e397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  salaryText: {fileID: 0}
-  moraleText: {fileID: 0}
-  speedText: {fileID: 0}
-  techText: {fileID: 0}
 --- !u!1 &612053947
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 500,000
+  m_text: Placeholder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
   m_sharedMaterial: {fileID: -6113601310215722490, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
@@ -801,7 +781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: New Int
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
   m_sharedMaterial: {fileID: -6113601310215722490, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
@@ -919,14 +899,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1438482051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db4454b893ad41f488666fd1de73e397, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d3870e27155a9641865f4e8fc40ccf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  salaryText: {fileID: 0}
-  moraleText: {fileID: 0}
-  speedText: {fileID: 0}
-  techText: {fileID: 0}
+  nameText: {fileID: 582479686}
+  salaryText: {fileID: 612053949}
+  moraleText: {fileID: 1613532409}
+  speedText: {fileID: 933829137}
+  techText: {fileID: 1992527502}
 --- !u!1 &1556855415
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +919,6 @@ GameObject:
   - component: {fileID: 1556855418}
   - component: {fileID: 1556855417}
   - component: {fileID: 1556855416}
-  - component: {fileID: 1556855420}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1033,23 +1012,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1556855420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556855415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db4454b893ad41f488666fd1de73e397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  salaryText: {fileID: 0}
-  moraleText: {fileID: 0}
-  speedText: {fileID: 0}
-  techText: {fileID: 0}
 --- !u!1 &1613532407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: New Int
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
   m_sharedMaterial: {fileID: -6113601310215722490, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
@@ -1327,7 +1289,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: New Int
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
   m_sharedMaterial: {fileID: -6113601310215722490, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
