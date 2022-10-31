@@ -383,18 +383,6 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 1947015391}
-    - target: {fileID: 5500991569275461970, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: AvaliableEmployees
-      value: 
-      objectReference: {fileID: 686578579}
-    - target: {fileID: 7037302513116707420, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_Name
-      value: Contract Progress
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509060078348307755, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_text
-      value: Contract progress
-      objectReference: {fileID: 0}
     - target: {fileID: 7838901508040848512, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -481,17 +469,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
---- !u!114 &686578579 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-  m_PrefabInstance: {fileID: 582429018}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &834720111
 GameObject:
   m_ObjectHideFlags: 0
