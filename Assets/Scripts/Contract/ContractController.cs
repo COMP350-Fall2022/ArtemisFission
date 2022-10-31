@@ -12,9 +12,9 @@ public class ContractController
         contracts = new Dictionary<string, Contract>();
     }
 
-    public string CreateNewContract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
+    public string CreateNewContract(string contractName, float totalEffort, int amountAwarded, int contractType)
     {
-        Contract c = new Contract(contractName, totalEffort, assignedWorkers, amountAwarded, contractType);
+        Contract c = new Contract(contractName, totalEffort, amountAwarded, contractType);
         contracts.Add(c.GetGuid(), c);
         return c.GetGuid();
     }
