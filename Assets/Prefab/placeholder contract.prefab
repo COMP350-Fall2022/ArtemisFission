@@ -1545,6 +1545,7 @@ MonoBehaviour:
   AssignedEmployees: {fileID: 6533283602123569838}
   RequiredParts: {fileID: 821998257206716177}
   ContractProgress: {fileID: 7509060078348307755}
+  AvaliableEmployees: {fileID: 557394257}
   gameController: {fileID: 0}
 --- !u!1 &2582127421799889412
 GameObject:
@@ -2019,7 +2020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Effort progress
+  m_text: Contract progress
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}
   m_sharedMaterial: {fileID: -6113601310215722490, guid: e695ebf9e76fb4d4389705d85ce28a82, type: 2}

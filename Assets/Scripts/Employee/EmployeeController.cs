@@ -28,17 +28,41 @@ public class EmployeeController
         return employees.Remove(id);
     }
 
-    //TODO: Go back and adjust to system where we only return active employees
     public List<Employee> GetEmployees() {
         return employees.Values.ToList();
     }
 
-    // Returns the number of employees
+    public List<Employee> GetUnavaliableEmployees() {
+
+        // return employees.Values.Where(employee => employee.isWorking == true) as List<Employee>;
+        List<Employee> tmp = new List<Employee>();
+        foreach (var e in employees.Values) {
+            if (e.isWorking) {
+                tmp.Add(e);
+            }
+        }
+        return tmp;
+    }
+
+    public List<Employee> GetAvaliableEmployees() {
+        List<Employee> tmp = new List<Employee>();
+        foreach (var e in employees.Values) {
+            if (!e.isWorking) {
+                tmp.Add(e);
+            }
+        }
+        return tmp;
+        // return employees.Values.Where(employee => employee.isWorking == false) as List<Employee>;
+    }
+
+    public Employee GetEmployee(string id) {
+        return employees[id];
+    }
+
     public int GetEmployeeCount() {
         return employees.Count;
     }
 
-    // Print out all employees to the log. For convience purposes.
     public void LogAllEmployees() {
         Debug.Log("Logging (" + employees.Count + ") employees...");
 

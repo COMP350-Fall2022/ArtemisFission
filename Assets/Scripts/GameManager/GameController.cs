@@ -5,10 +5,11 @@ using System;
 public class GameController : MonoBehaviour
 {
     public EmployeeController employeeController = new EmployeeController(10);
-    public ContractController contractController = new ContractController();
+    public ContractController contractController;
     public DateTime globalTime = new DateTime();
 
     void Start() {
+        contractController = new ContractController(employeeController);
         contractController.CreateNewContract("Contract1", 100, null, 10, 1);
         contractController.CreateNewContract("Contract2", 100, null, 10, 1);
         contractController.CreateNewContract("Contract3", 100, null, 10, 1);

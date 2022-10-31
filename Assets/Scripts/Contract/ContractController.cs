@@ -7,9 +7,12 @@ public class ContractController
 {
     Dictionary<string, Contract> contracts;
 
-    public ContractController()
+    EmployeeController employeeController;
+
+    public ContractController(EmployeeController employeeController)
     {
         contracts = new Dictionary<string, Contract>();
+        this.employeeController = employeeController;
     }
 
     public string CreateNewContract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
@@ -42,9 +45,14 @@ public class ContractController
     public bool AssignEmployee(string contractGuid, string employeeGuid) {
         Contract c = GetContract(contractGuid);
         if (!c.IsComplete()) {
-            // TODO: We want to check with the employee controller if the ID actually exists in the future?
-            c.AssignWorker(employeeGuid);
-            return true;
+            Employee e = employeeController.GetEmployee(employeeGuid);
+            if (e != null) {
+                c.AssignWorker(employeeGuid);
+                e.isWorking = true;
+                return true;
+            } else {
+                return false;
+            }
         }
         return false;
     }
@@ -52,7 +60,13 @@ public class ContractController
     public bool RemoveEmployee(string contractGuid, string employeeGuid) {
         Contract c = GetContract(contractGuid);
         if (c.GetAmountOfAssignedWorkers() > 0) {
-            return c.UnassignWorker(employeeGuid);
+            Employee e = employeeController.GetEmployee(employeeGuid);
+            if (e != null) {
+                e.isWorking = false;
+                return c.UnassignWorker(employeeGuid);
+            } else {
+                return false;
+            }
         }
         return false;
     }

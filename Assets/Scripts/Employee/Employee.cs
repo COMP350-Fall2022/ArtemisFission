@@ -18,12 +18,14 @@ public class Employee
     int salary;
     EmployeeSkill[] skills;
     private Guid id;
+    internal bool isWorking;
 
     public Employee(string name, int salary, EmployeeSkill[] skills) {
         this.name = name;
         this.salary = salary;
         this.skills = skills;
         this.id = System.Guid.NewGuid();
+        this.isWorking = false;
     }
 
     public void SetName(string newName) {
