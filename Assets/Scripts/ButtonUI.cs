@@ -7,11 +7,11 @@ public class ButtonUI : MonoBehaviour
 
     public void NewEmployeeButton() {
         Debug.Log("clicked");
-        EmployeeSkill[] skills = {EmployeeSkill.Skill1};
+        // EmployeeSkill[] skills = {EmployeeSkill.Skill1};
 
-        string id = cont.CreateNewEmployee("Employee "+Random.Range(0f, 10f), 100, skills);
-        cont.LogAllEmployees();
-        cont.FireEmployee(id);
-        cont.LogAllEmployees();
+        // string id = cont.CreateNewEmployee("Employee "+Random.Range(0f, 10f), 100, skills);
+        // cont.LogAllEmployees();
+        // cont.FireEmployee(id);
+        // cont.LogAllEmployees();
     }
 }

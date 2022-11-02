@@ -21,7 +21,7 @@ public class ListController : MonoBehaviour
     }
 
     void Update() {
-        if (gameController.contractController != null && gameController.employeeController != null) {
+        if (gameController.contractController != null) {
             contracts = gameController.contractController.GetAllContracts();
             // foreach (var item in gameController.employeeController.GetAvaliableEmployees())
             // {
@@ -39,11 +39,11 @@ public class ListController : MonoBehaviour
                     ListItemController controller = newContract.GetComponent<ListItemController>();
                     controller.Name.text = contract.GetName();
                     controller.Id.text = contract.GetGuid();
-                    controller.AssignedEmployees.text = string.Join("\n", contract.GetAssignedWorkers());
+                    controller.AssignedEmployees.text = string.Join("\n", contract.GetAssignedEmployees());
                     controller.ContractProgress.text = contract.GetCompletedWork() + " / " + contract.GetTotalEffort();
                     controller.RequiredParts.text = "Placeholder";
                     newContract.transform.SetParent(ContentPanel.transform, false);
-                    Debug.Log(gameController.employeeController.GetEmployeeCount());
+                    // Debug.Log(gameController.employeeController.GetEmployeeCount());
                     // TODO: ensure that we use this instead of the other method. We don't need to expost the game controller to the list display component
                     // controller.employees = gameController.employeeController.GetAvaliableEmployees();
                 }

@@ -15,9 +15,9 @@ public class ContractController
         this.employeeController = employeeController;
     }
 
-    public string CreateNewContract(string contractName, float totalEffort, List<string> assignedWorkers, int amountAwarded, int contractType)
+    public string CreateNewContract(string contractName, float totalEffort, int amountAwarded, int contractType)
     {
-        Contract c = new Contract(contractName, totalEffort, assignedWorkers, amountAwarded, contractType);
+        Contract c = new Contract(contractName, totalEffort, amountAwarded, contractType);
         contracts.Add(c.GetGuid(), c);
         return c.GetGuid();
     }
@@ -42,44 +42,30 @@ public class ContractController
         return contracts.Count;
     }
 
-    public bool AssignEmployee(string contractGuid, string employeeGuid) {
+    public void AssignEmployee(string contractGuid, string employeeGuid) {
         Contract c = GetContract(contractGuid);
-        if (!c.IsComplete()) {
-            Employee e = employeeController.GetEmployee(employeeGuid);
-            if (e != null) {
-                c.AssignWorker(employeeGuid);
-                e.isWorking = true;
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            Debug.Log("Is complete");
-        }
-        return false;
+        c.AssignEmployee(employeeGuid);
+        employeeController.AssignEmployee(employeeGuid);
+
     }
 
-    public bool RemoveEmployee(string contractGuid, string employeeGuid) {
+    public void UnassignEmployee(string contractGuid, string employeeGuid) {
         Contract c = GetContract(contractGuid);
-        if (c.GetAmountOfAssignedWorkers() > 0) {
-            Employee e = employeeController.GetEmployee(employeeGuid);
-            if (e != null) {
-                e.isWorking = false;
-                return c.UnassignWorker(employeeGuid);
-            } else {
-                return false;
-            }
-        }
-        return false;
+        c.UnassignEmployee(employeeGuid);
+        employeeController.UnassignEmployee(employeeGuid);
     }
 
     public List<string> GetContractEmployees(string contractGuid) {
-        // foreach (var con in GetAllContracts())
-        // {
-        //     Debug.Log(con.GetGuid());
-        // }
         Contract c = GetContract(contractGuid);
-        return c.GetAssignedWorkers();
+        return c.GetAssignedEmployees();
+    }
+
+    public List<Contract> GetActiveContracts() {
+        return contracts.Values.ToList().FindAll(c => c.GetAssignedEmployees().Count > 0);
+    }
+
+    public List<Contract> GetInactiveContracts() {
+        return contracts.Values.ToList().FindAll(c => c.GetAssignedEmployees().Count == 0);
     }
 
     public void LogContract(string guid)
@@ -88,7 +74,7 @@ public class ContractController
 
         Debug.Log("Contract Name: " + c.GetName());
         Debug.Log("Contract Time to Complete: " + c.GetTotalEffort());
-        Debug.Log("Assigned Workers: " + c.GetAssignedWorkers());
+        Debug.Log("Assigned Employees: " + c.GetAssignedEmployees());
         Debug.Log("Award: " + c.GetAward());
         Debug.Log("Contract Type: " + c.GetContractType());
     }
@@ -100,10 +86,23 @@ public class ContractController
         {
             Debug.Log("Contract Name: " + entry.Value.GetName());
             Debug.Log("Contract Time to Complete: " + entry.Value.GetTotalEffort());
-            Debug.Log("Assigned Workers: " + entry.Value.GetAssignedWorkers());
+            Debug.Log("Assigned Employees: " + entry.Value.GetAssignedEmployees());
             Debug.Log("Award: " + entry.Value.GetAward());
             Debug.Log("Contract Type: " + entry.Value.GetContractType());
         }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    public List<Employee> GetEmployees() {
+        return employeeController.GetEmployees();
+    }
+
+    public List<Employee> GetInactiveEmployees() {
+        return employeeController.GetInactiveEmployees();
+    }
+
+    public List<Employee> GetActiveEmployees() {
+        return employeeController.GetActiveEmployees();
     }
 
     public DateTime timeOfLastTick = DateTime.Now;
@@ -115,14 +114,14 @@ public class ContractController
             // Debug.Log("Ticking");
             foreach (KeyValuePair<string, Contract> entry in contracts) 
             {
-                if (entry.Value.IsActive()) {
-                    entry.Value.IncrementWork(entry.Value.GetAmountOfAssignedWorkers());
-                    // subtract money for every worker we find
-                }
+                // if (entry.Value.IsActive()) {
+                //     entry.Value.IncrementWork(entry.Value.GetAmountOfAssignedWorkers());
+                //     // subtract money for every worker we find
+                // }
 
-                if (entry.Value.IsComplete()) {
-                    entry.Value.RemoveWorkers();
-                }
+                // if (entry.Value.IsComplete()) {
+                //     entry.Value.RemoveWorkers();
+                // }
             }
             timeOfLastTick = DateTime.Now;
         }
