@@ -34,21 +34,24 @@ public class EmployeeController
     }
 
     public List<Employee> GetActiveEmployees() {
-        List<Employee> tmp = employees.Where(e => e.Value == true) as List<Employee>;
-        if (tmp == null) {
-            return new List<Employee>();
-        } else {
-            return tmp;
+        List<Employee> tmp = new List<Employee>();
+        foreach(KeyValuePair<Employee, bool> kv in employees) {
+            if (kv.Value == true) {
+                tmp.Add(kv.Key);
+            }
         }
+        return tmp;
     }
 
     public List<Employee> GetInactiveEmployees() {
-        List<Employee> tmp = employees.Where(e => e.Value == false) as List<Employee>;
-        if (tmp == null) {
-            return new List<Employee>();
-        } else {
-            return tmp;
-        }    }
+        List<Employee> tmp = new List<Employee>();
+        foreach(KeyValuePair<Employee, bool> kv in employees) {
+            if (kv.Value == false) {
+                tmp.Add(kv.Key);
+            }
+        }
+        return tmp;
+    }
 
     public void UnassignEmployee(Employee e) {
         employees[e] = false;
@@ -74,6 +77,7 @@ public class EmployeeController
 
     public bool AssignEmployee(string id) {
         Employee e = GetEmployeeFromId(id);
+        Debug.Log("Got " + e.name);
         return AssignEmployee(e);
     }
 

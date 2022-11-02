@@ -93,7 +93,7 @@ public class ContractController
     }
 
     // -----------------------------------------------------------------------------------------------------
-    public List<Employee> GetEmployees() {
+    public List<Employee> GetAllEmployees() {
         return employeeController.GetEmployees();
     }
 
