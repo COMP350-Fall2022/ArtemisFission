@@ -53,6 +53,8 @@ public class ContractController
             } else {
                 return false;
             }
+        } else {
+            Debug.Log("Is complete");
         }
         return false;
     }
@@ -69,6 +71,15 @@ public class ContractController
             }
         }
         return false;
+    }
+
+    public List<string> GetContractEmployees(string contractGuid) {
+        // foreach (var con in GetAllContracts())
+        // {
+        //     Debug.Log(con.GetGuid());
+        // }
+        Contract c = GetContract(contractGuid);
+        return c.GetAssignedWorkers();
     }
 
     public void LogContract(string guid)
@@ -101,7 +112,7 @@ public class ContractController
     public void Tick()
     {
         if (DateTime.Now.Ticks - timeOfLastTick.Ticks >= TICK_THRESHOLD) {
-            Debug.Log("Ticking");
+            // Debug.Log("Ticking");
             foreach (KeyValuePair<string, Contract> entry in contracts) 
             {
                 if (entry.Value.IsActive()) {

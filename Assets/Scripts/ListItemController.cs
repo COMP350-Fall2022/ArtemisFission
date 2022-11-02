@@ -24,20 +24,24 @@ public class ListItemController : MonoBehaviour
 
     // Updates if any new users are added
     void Update() {
-        if (gameController.employeeController != null) {
+        if (gameController.employeeController != null && gameController.contractController != null) {
             employees = gameController.employeeController.GetAvaliableEmployees();
-            Debug.Log("Got " + employees.Count + " Employees");
+            // foreach (var employeeId in gameController.contractController.GetContractEmployees(Id.text))
+            // {
+            //     employees.Add(gameController.employeeController.GetEmployee(employeeId));
+            // }
+            // Debug.Log("Got " + employees.Count + " Employees");
         }
 
         if (employees != null && !employees.Equals(pastEmployees)) {
-            Debug.Log("Inside the bug boy");
-            employees.Clear();
-            employees.AddRange(gameController.employeeController.GetEmployees());
+            // employees.Clear();
+            // employees.AddRange(gameController.employeeController.GetEmployees());
             AvaliableEmployees.ClearOptions();
             foreach (Employee item in employees)
             {
                 AvaliableEmployees.options.Add(new TMP_Dropdown.OptionData() {text = item.name});
-                Debug.Log(item.name);
+                // TODO: Figure out why this is looping when we set a condition in the begining
+                // Debug.Log(item.name);
             }
             pastEmployees = employees;
         }
@@ -46,6 +50,9 @@ public class ListItemController : MonoBehaviour
     // Called whenever an option is selected
     public void HandleDropdownSelect(int val) {
         Debug.Log(val);
+        Debug.Log(employees[val].name);
+        bool tmp = gameController.contractController.AssignEmployee(Id.text, employees[val].GetId());
+        Debug.Log(tmp);
         //TODO: This part
     }
 }

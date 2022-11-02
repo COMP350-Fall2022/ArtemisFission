@@ -375,6 +375,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleDropdownSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ListItemController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1727787076868745197, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
       propertyPath: m_Name
       value: placeholder contract
