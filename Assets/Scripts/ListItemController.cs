@@ -13,6 +13,7 @@ public class ListItemController : MonoBehaviour
     public Contract contract = null;
     void Start() {
         EmployeeSelectDropdown.ClearOptions();
+        // EmployeeSelectDropdown.value = -1;
     }
 
     // Updates if any new users are added
@@ -32,13 +33,9 @@ public class ListItemController : MonoBehaviour
 
             EmployeeSelectDropdown.ClearOptions();
             employees = gameController.contractController.GetAllEmployees();
-            List<string> dropdownItems = new List<string>();
-            foreach (var item in employees)
-            {
-                dropdownItems.Add(item.name);
-            }
             List<Employee> activeEmployees = gameController.contractController.GetActiveEmployees();
 
+            EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = "- select an employee -"});
             foreach (var e in employees)
             {
                 if (activeEmployees.Contains(e)) {
@@ -47,13 +44,14 @@ public class ListItemController : MonoBehaviour
                     EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = e.name});
                 }
             }
+            EmployeeSelectDropdown.RefreshShownValue();
         }
     }
 
     // Called whenever an option is selected
     public void HandleDropdownSelect(int val) {
-        Debug.Log(employees[val].name);
-        gameController.contractController.AssignEmployee(contract.GetGuid(), employees[val].GetId());
-        EmployeeSelectDropdown.value = val;
+        Debug.Log(employees[val-1].name);
+        gameController.contractController.AssignEmployee(contract.GetGuid(), employees[val-1].GetId());
+        EmployeeSelectDropdown.value = val-1;
     }
 }
