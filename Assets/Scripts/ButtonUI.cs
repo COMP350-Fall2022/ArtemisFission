@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ButtonUI : MonoBehaviour
 {
-    EmployeeController cont = new EmployeeController(maxEmployees: 5);
+        EmployeeController cont = new EmployeeController(maxEmployees: 5);
 
-    public void NewEmployeeButton() {
+        public void NewEmployeeButton() {
         Debug.Log("clicked");
         // EmployeeSkill[] skills = {EmployeeSkill.Skill1};
 
@@ -13,5 +13,5 @@ public class ButtonUI : MonoBehaviour
         // cont.LogAllEmployees();
         // cont.FireEmployee(id);
         // cont.LogAllEmployees();
-    }
+        }
 }
