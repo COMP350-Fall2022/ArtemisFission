@@ -23,14 +23,8 @@ public class ListController : MonoBehaviour
     void Update() {
         if (gameController.contractController != null) {
             contracts = gameController.contractController.GetAllContracts();
-            // foreach (var item in gameController.employeeController.GetAvaliableEmployees())
-            // {
-            //     Debug.Log(item.name);
-            // }
-            // Debug.Log(string.Join("\n", gameController.employeeController.GetAvaliableEmployees()));
         }
 
-        // compare
         if (contracts != null && !contracts.Equals(prevContracts)) {
             foreach (Contract contract in contracts) {
                 if (!prevContracts.Contains(contract)) {
@@ -44,9 +38,6 @@ public class ListController : MonoBehaviour
                     controller.RequiredParts.text = "...";
                     controller.contract = contract;
                     newContract.transform.SetParent(ContentPanel.transform, false);
-                    // Debug.Log(gameController.employeeController.GetEmployeeCount());
-                    // TODO: ensure that we use this instead of the other method. We don't need to expost the game controller to the list display component
-                    // controller.employees = gameController.employeeController.GetAvaliableEmployees();
                 }
             }
             foreach(Contract p in prevContracts) {

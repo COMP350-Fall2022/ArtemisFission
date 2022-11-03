@@ -6,13 +6,8 @@ using System.Linq;
 // Controller for all employees in the game. Keeps track of all active employees.
 public class EmployeeController
 {
-    // Dictionary<Employee, Contract> activeEmployees = new Dictionary<Employee, Contract>();
-    // List<Employee> inactiveEmployees = new List<Employee>();
     private Dictionary<Employee, bool> employees = new Dictionary<Employee, bool>();
-    // Dictionary<string, Contract> activeEmployees;
     int maxEmployees;
-
-    // Constructor.
     public EmployeeController(int maxEmployees) {
         this.maxEmployees = maxEmployees;
     }

@@ -15,6 +15,9 @@ public class ContractController
         this.employeeController = employeeController;
     }
 
+    // --------------------------------
+    // Contract Functions (Passthrough)
+    // --------------------------------
     public string CreateNewContract(string contractName, float totalEffort, int amountAwarded, int contractType)
     {
         Contract c = new Contract(contractName, totalEffort, amountAwarded, contractType);
@@ -40,36 +43,6 @@ public class ContractController
     public int GetContractCount()
     {
         return contracts.Count;
-    }
-
-    public void AssignEmployee(string contractGuid, string employeeGuid) {
-        Contract c = GetContract(contractGuid);
-        UnassignEmployee(employeeGuid);
-        c.AssignEmployee(employeeGuid);
-        employeeController.AssignEmployee(employeeGuid);
-    }
-
-    public void UnassignEmployee(string contractGuid, string employeeGuid) {
-        Contract c = GetContract(contractGuid);
-        c.UnassignEmployee(employeeGuid);
-        employeeController.UnassignEmployee(employeeGuid);
-    }
-
-    public void UnassignEmployee(string employeeGuid) {
-        foreach (Contract c in contracts.Values) {
-            if (c.GetAssignedEmployees().Contains(employeeGuid)) {
-                c.UnassignEmployee(employeeGuid);
-            }
-        }
-    }
-
-    public List<string> GetContractEmployees(string contractGuid) {
-        Contract c = GetContract(contractGuid);
-        return c.GetAssignedEmployees();
-    }
-
-    public Employee GetEmployeeFromId(string employeeId) {
-        return employeeController.GetEmployeeFromId(employeeId);
     }
 
     public List<Contract> GetActiveContracts() {
@@ -104,7 +77,40 @@ public class ContractController
         }
     }
 
-    // -----------------------------------------------------------------------------------------------------
+    // --------------------------------
+    // Employee Functions (Passthrough)
+    // --------------------------------
+
+    public void AssignEmployee(string contractGuid, string employeeGuid) {
+        Contract c = GetContract(contractGuid);
+        UnassignEmployee(employeeGuid);
+        c.AssignEmployee(employeeGuid);
+        employeeController.AssignEmployee(employeeGuid);
+    }
+
+    public void UnassignEmployee(string contractGuid, string employeeGuid) {
+        Contract c = GetContract(contractGuid);
+        c.UnassignEmployee(employeeGuid);
+        employeeController.UnassignEmployee(employeeGuid);
+    }
+
+    public void UnassignEmployee(string employeeGuid) {
+        foreach (Contract c in contracts.Values) {
+            if (c.GetAssignedEmployees().Contains(employeeGuid)) {
+                c.UnassignEmployee(employeeGuid);
+            }
+        }
+    }
+
+    public List<string> GetContractEmployees(string contractGuid) {
+        Contract c = GetContract(contractGuid);
+        return c.GetAssignedEmployees();
+    }
+
+    public Employee GetEmployeeFromId(string employeeId) {
+        return employeeController.GetEmployeeFromId(employeeId);
+    }
+
     public List<Employee> GetAllEmployees() {
         return employeeController.GetEmployees();
     }

@@ -10,8 +10,8 @@ public class GameController : MonoBehaviour
 
     void Start() {
         contractController = new ContractController(employeeController);
-        contractController.CreateNewContract("Contract1", 100, 10, 1);
-        contractController.CreateNewContract("Contract2", 100, 10, 1);
+        contractController.CreateNewContract("Contract1", 10000, 10, 1);
+        contractController.CreateNewContract("Contract2", 500, 10, 1);
         contractController.CreateNewContract("Contract3", 100, 10, 1);
         contractController.CreateNewContract("Contract4", 100, 10, 1);
         contractController.CreateNewContract("Contract5", 100, 10, 1);

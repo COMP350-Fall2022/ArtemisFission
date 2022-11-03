@@ -19,8 +19,8 @@ public class ListItemController : MonoBehaviour
     void Update() {
         if (gameController.contractController != null) {
             AssignedEmployees.text = "";
-            if (Id.text != null && Id.text != "Id Field") {
-                List<string> contractEmployeeIds = gameController.contractController.GetContractEmployees(Id.text);
+            if (contract != null) {
+                List<string> contractEmployeeIds = gameController.contractController.GetContractEmployees(contract.GetGuid());
                 foreach (var e in contractEmployeeIds) {
                     AssignedEmployees.text += ( gameController.contractController.GetEmployeeFromId(e).name + "\n" );
                 }
@@ -47,29 +47,13 @@ public class ListItemController : MonoBehaviour
                     EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = e.name});
                 }
             }
-
-            // EmployeeSelectDropdown.onValueChanged.AddListener(delegate {DropdownItemSelected(EmployeeSelectDropdown);});
         }
     }
-
-    // public void DropdownItemSelected(TMP_Dropdown dropdown) {
-    //     int index = dropdown.value;
-    //     Debug.Log("SELECT:" + dropdown.options[index].text);
-
-    //     EmployeeSelectLabel.text = dropdown.options[index].text;
-    // }
 
     // Called whenever an option is selected
     public void HandleDropdownSelect(int val) {
         Debug.Log(employees[val].name);
-        gameController.contractController.AssignEmployee(Id.text, employees[val].GetId());
+        gameController.contractController.AssignEmployee(contract.GetGuid(), employees[val].GetId());
         EmployeeSelectDropdown.value = val;
-        // EmployeeSelectLabel.text = employees[val].name;
-        
-        // gameController.BroadcastMessage("RefreshContract", Id.text);
     }
-
-    // public void OnDropdownSelect(TMP_Text id) {
-    //     gameController.contractController.AssignEmployee(contractGuid, id)
-    // }
 }
