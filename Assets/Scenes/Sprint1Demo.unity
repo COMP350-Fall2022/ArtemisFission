@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000091552734}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -0.0019836, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &135649925
@@ -375,42 +375,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_Options.m_Options.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HandleDropdownSelect
-      objectReference: {fileID: 0}
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: ListItemController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 557394257, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1727787076868745197, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
       propertyPath: m_Name
       value: placeholder contract
@@ -449,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7838901508040848512, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 309.78802
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 7838901508040848512, guid: 74368a6dcbbcc436093746446a3f8151, type: 3}
       propertyPath: m_SizeDelta.y
@@ -604,8 +568,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 13.658, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 323.91925, y: -385.53537}
-  m_SizeDelta: {x: 983.2925, y: 571.0708}
+  m_AnchoredPosition: {x: 322.69617, y: -384.26343}
+  m_SizeDelta: {x: 1218.6848, y: 575.5977}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &930019931 stripped
 GameObject:
@@ -647,8 +611,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 261.8014, y: -35.91507}
-  m_SizeDelta: {x: 523.6027, y: 48.7592}
+  m_AnchoredPosition: {x: 145.72003, y: -33.598694}
+  m_SizeDelta: {x: 291.4399, y: 44.1264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993933776
 MonoBehaviour:
@@ -785,10 +749,10 @@ RectTransform:
   m_Father: {fileID: 834720115}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -229.8429, y: -24.38}
-  m_SizeDelta: {x: 523.6027, y: 499.24}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 154.69241, y: 0.000030517578}
+  m_SizeDelta: {x: 309.3848, y: -0.0001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1091763516
 MonoBehaviour:
@@ -1277,7 +1241,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 108010474}
   m_HandleRect: {fileID: 108010473}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

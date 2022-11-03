@@ -57,7 +57,7 @@ public class EmployeeController
         employees[e] = false;
     }
 
-    private Employee GetEmployeeFromId(string id) {
+    public Employee GetEmployeeFromId(string id) {
         return employees.Keys.ToList().Find(e => e.GetId() == id);
     }
 

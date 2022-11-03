@@ -41,7 +41,8 @@ public class ListController : MonoBehaviour
                     controller.Id.text = contract.GetGuid();
                     controller.AssignedEmployees.text = string.Join("\n", contract.GetAssignedEmployees());
                     controller.ContractProgress.text = contract.GetCompletedWork() + " / " + contract.GetTotalEffort();
-                    controller.RequiredParts.text = "Placeholder";
+                    controller.RequiredParts.text = "...";
+                    controller.contract = contract;
                     newContract.transform.SetParent(ContentPanel.transform, false);
                     // Debug.Log(gameController.employeeController.GetEmployeeCount());
                     // TODO: ensure that we use this instead of the other method. We don't need to expost the game controller to the list display component

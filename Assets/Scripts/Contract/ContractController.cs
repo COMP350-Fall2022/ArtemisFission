@@ -44,9 +44,9 @@ public class ContractController
 
     public void AssignEmployee(string contractGuid, string employeeGuid) {
         Contract c = GetContract(contractGuid);
+        UnassignEmployee(employeeGuid);
         c.AssignEmployee(employeeGuid);
         employeeController.AssignEmployee(employeeGuid);
-
     }
 
     public void UnassignEmployee(string contractGuid, string employeeGuid) {
@@ -55,9 +55,21 @@ public class ContractController
         employeeController.UnassignEmployee(employeeGuid);
     }
 
+    public void UnassignEmployee(string employeeGuid) {
+        foreach (Contract c in contracts.Values) {
+            if (c.GetAssignedEmployees().Contains(employeeGuid)) {
+                c.UnassignEmployee(employeeGuid);
+            }
+        }
+    }
+
     public List<string> GetContractEmployees(string contractGuid) {
         Contract c = GetContract(contractGuid);
         return c.GetAssignedEmployees();
+    }
+
+    public Employee GetEmployeeFromId(string employeeId) {
+        return employeeController.GetEmployeeFromId(employeeId);
     }
 
     public List<Contract> GetActiveContracts() {
@@ -114,14 +126,15 @@ public class ContractController
             // Debug.Log("Ticking");
             foreach (KeyValuePair<string, Contract> entry in contracts) 
             {
-                // if (entry.Value.IsActive()) {
-                //     entry.Value.IncrementWork(entry.Value.GetAmountOfAssignedWorkers());
-                //     // subtract money for every worker we find
-                // }
+                entry.Value.IncrementWork(entry.Value.GetAssignedEmployees().Count);
 
-                // if (entry.Value.IsComplete()) {
-                //     entry.Value.RemoveWorkers();
-                // }
+                if (entry.Value.IsComplete()) {
+                    foreach (var eId in entry.Value.GetAssignedEmployees())
+                    {
+                        employeeController.UnassignEmployee(eId);
+                    }
+                    entry.Value.UnassignAllEmployees();
+                }
             }
             timeOfLastTick = DateTime.Now;
         }

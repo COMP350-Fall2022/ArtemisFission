@@ -76,8 +76,10 @@ public class Contract
     public bool UnassignEmployee(string e) {
         if (assignedEmployees.Contains(e)) {
             assignedEmployees.Remove(e);
+            Debug.Log("Unassigned " + e + " from " + contractName);
             return true;
         } else {
+            Debug.Log(e + " NOT IN " + contractName);
             return false;
         }
     }
