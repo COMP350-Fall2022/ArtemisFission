@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
 
     bool PausePressed()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("paused");
             paused = !paused;
