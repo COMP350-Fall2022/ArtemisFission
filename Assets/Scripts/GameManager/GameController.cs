@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public EmployeeController employeeController = new EmployeeController(10);
     public ContractController contractController = new ContractController();
     public DateTime globalTime = new DateTime();
+    public bool paused = false;
 
     void Start() {
         contractController.CreateNewContract("Contract1", 100, 10, 1);
@@ -29,6 +30,22 @@ public class GameController : MonoBehaviour
     {
         // handle tick behavior right here
         this.globalTime = this.globalTime.AddTicks(1000);
-        contractController.Tick();
+        
+        if (!PausePressed())
+        {
+            contractController.Tick();
+        }
+    }
+
+    bool PausePressed()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("paused");
+            paused = !paused;
+        }
+
+        Debug.Log("paused = " + paused);
+        return paused;
     }
 }
