@@ -2,39 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class ListItemController : MonoBehaviour
 {
-    public TMP_Text Name, Description;
-    public TMP_Dropdown AssignedEmployee;
+    public TMP_Text Name, Id, AssignedEmployees, RequiredParts, ContractProgress, EmployeeSelectLabel;
+    public TMP_Dropdown EmployeeSelectDropdown;
     public GameController gameController;
-    private List<TMP_Dropdown.OptionData> optionData;
     private List<Employee> employees;
-
+    public Contract contract = null;
     void Start() {
-        employees = gameController.employeeController.GetEmployees();
-        AssignedEmployee.ClearOptions();
-        foreach (Employee item in employees)
-        {
-            AssignedEmployee.options.Add(new TMP_Dropdown.OptionData() {text = item.GetName()});
-        }
+        EmployeeSelectDropdown.ClearOptions();
+        // EmployeeSelectDropdown.value = -1;
     }
 
     // Updates if any new users are added
     void Update() {
-        if (employees.Count != gameController.employeeController.GetEmployeeCount()) {
-            employees.Clear();
-            employees.AddRange(gameController.employeeController.GetEmployees());
-            AssignedEmployee.ClearOptions();
-            foreach (Employee item in employees)
-            {
-                AssignedEmployee.options.Add(new TMP_Dropdown.OptionData() {text = item.GetName()});
+        if (gameController.contractController != null) {
+            AssignedEmployees.text = "";
+            if (contract != null) {
+                List<string> contractEmployeeIds = gameController.contractController.GetContractEmployees(contract.GetGuid());
+                foreach (var e in contractEmployeeIds) {
+                    AssignedEmployees.text += ( gameController.contractController.GetEmployeeFromId(e).name + "\n" );
+                }
             }
+
+            if (contract != null) {
+                ContractProgress.text = contract.GetCompletedWork() + " / " + contract.GetTotalEffort();
+            }
+
+            EmployeeSelectDropdown.ClearOptions();
+            employees = gameController.contractController.GetAllEmployees();
+            List<Employee> activeEmployees = gameController.contractController.GetActiveEmployees();
+
+            EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = "- select an employee -"});
+            foreach (var e in employees)
+            {
+                if (activeEmployees.Contains(e)) {
+                    EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = e.name + " (busy)"});
+                } else {
+                    EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = e.name});
+                }
+            }
+            EmployeeSelectDropdown.RefreshShownValue();
         }
     }
 
     // Called whenever an option is selected
     public void HandleDropdownSelect(int val) {
-        Debug.Log(val);
+        Debug.Log(employees[val-1].name);
+        gameController.contractController.AssignEmployee(contract.GetGuid(), employees[val-1].GetId());
+        EmployeeSelectDropdown.value = val-1;
     }
 }

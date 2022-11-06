@@ -18,7 +18,6 @@ public class Employee
     int salary;
     EmployeeSkill[] skills;
     private Guid id;
-
     public Employee(string name, int salary, EmployeeSkill[] skills) {
         this.name = name;
         this.salary = salary;
