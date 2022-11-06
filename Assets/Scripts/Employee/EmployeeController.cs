@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using System.Linq;
 
 // Controller for all employees in the game. Keeps track of all active employees.
@@ -86,5 +88,9 @@ public class EmployeeController
         foreach(KeyValuePair<Employee, bool> entry in employees) {
             Debug.Log("    > " + entry.Key.name);
         }
+    }
+
+    public void StatManager() {
+        //ToDO
     }
 }

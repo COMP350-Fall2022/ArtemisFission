@@ -15,7 +15,8 @@ public class StatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nameText.text = "Charon";
+      
+        nameText.text = "Frances";
         salaryText.text = "500,000";
         moraleText.text = "5";
         speedText.text = "4";

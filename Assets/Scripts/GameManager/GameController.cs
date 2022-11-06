@@ -25,6 +25,12 @@ public class GameController : MonoBehaviour
         employeeController.CreateNewEmployee("Frances", 10000, null);
         employeeController.CreateNewEmployee("Alex", 10000, null);
         employeeController.CreateNewEmployee("John", 10000, null);
+
+        //This line of code incorporates the stat manager.
+        //employeeController.StatManager("Andrew", 500000, 5, 4, 3);
+        //employeeController.StatManager("Frances", 500000, 5, 4, 3);
+        //employeeController.StatManager("Alex", 500000, 5, 4, 3);
+        //employeeController.StatManager("John", 500000, 5, 4, 3);
     }
 
     // Update is called once per frame
