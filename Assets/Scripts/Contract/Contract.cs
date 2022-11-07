@@ -8,73 +8,99 @@ using System;
 public class Contract
 {
     internal string contractName;
-    float timeToComplete;
-    List<string> assignedWorkers;
+    float totalEffort;
+    float completedWork;
+    List<string> assignedEmployees = new List<string>();
     int amountAwarded;
     int contractType;
 
     private Guid guid;
-    
-    public Contract(string contractName, float timeToComplete, int amountAwarded, int contractType)
+
+    public Contract(string contractName, float totalEffort, int amountAwarded, int contractType)
     {
         this.contractName = contractName;
-        this.timeToComplete = timeToComplete;
+        this.totalEffort = totalEffort;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
     }
 
-    //Change name of contract
     public void SetName(string newName)
     {
         this.contractName = newName;
     }
 
-    //Get name of contract
     public string GetName()
     {
         return this.contractName;
     }
-    
-    //Get time to complete
-    public float GetTime()
+
+    public float GetTotalEffort()
     {
-        return this.timeToComplete;
+        return this.totalEffort;
     }
 
-    // Assign workers
-    public void AssignWorker(string workerId) {
-        assignedWorkers.Add(workerId);
+    public float GetCompletedWork() {
+        return this.completedWork;
     }
 
-    // Remove workers from being assigned
-    public bool UnassignWorker(string workerId) {
-        return assignedWorkers.Remove(workerId);
-
-    }
-
-    //get assigned workers
-    public List<string> GetAssignedWorkers()
-    {
-        return this.assignedWorkers;
-    }
-
-    //get amount awarded
     public int GetAward()
     {
         return this.amountAwarded;
     }
 
-    //get contract type
     public int GetContractType()
     {
         return this.contractType;
     }
 
-    //get guid as string
     public string GetGuid()
     {
         return this.guid.ToString();
+    }
+
+    public List<string> GetAssignedEmployees() {
+        return assignedEmployees;
+    }
+
+    public bool AssignEmployee(string e) {
+        if (!assignedEmployees.Contains(e)) {
+            assignedEmployees.Add(e);
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    public bool UnassignEmployee(string e) {
+        if (assignedEmployees.Contains(e)) {
+            assignedEmployees.Remove(e);
+            Debug.Log("Unassigned " + e + " from " + contractName);
+            return true;
+        } else {
+            Debug.Log(e + " NOT IN " + contractName);
+            return false;
+        }
+    }
+
+    public void UnassignAllEmployees() {
+        assignedEmployees.Clear();
+    }
+
+    public void IncrementWork(float work)
+    {
+        completedWork += work;
+    }
+
+    public bool IsComplete()
+    {
+        if (completedWork >= totalEffort)
+        {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
