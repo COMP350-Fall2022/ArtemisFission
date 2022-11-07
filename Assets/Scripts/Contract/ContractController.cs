@@ -78,7 +78,7 @@ public class ContractController
     }
 
     // --------------------------------
-    // Employee Functions (Passthrough)
+    // Employee and Stat Functions (Passthrough)
     // --------------------------------
 
     public void AssignEmployee(string contractGuid, string employeeGuid) {
@@ -122,6 +122,11 @@ public class ContractController
     public List<Employee> GetActiveEmployees() {
         return employeeController.GetActiveEmployees();
     }
+
+    /*public List<Stat> GetAllStats()
+    {
+        //return employeeStatController.Get
+    } */
 
     public DateTime timeOfLastTick = DateTime.Now;
     public int TICK_THRESHOLD = 100000;
