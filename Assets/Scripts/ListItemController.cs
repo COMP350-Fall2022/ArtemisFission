@@ -31,20 +31,23 @@ public class ListItemController : MonoBehaviour
                 ContractProgress.text = contract.GetCompletedWork() + " / " + contract.GetTotalEffort();
             }
 
-            EmployeeSelectDropdown.ClearOptions();
-            employees = gameController.contractController.GetAllEmployees();
-            List<Employee> activeEmployees = gameController.contractController.GetActiveEmployees();
+            // TODO: Remove this later when we go back after this sprint
+            if (EmployeeSelectDropdown != null) {
+                EmployeeSelectDropdown.ClearOptions();
+                employees = gameController.contractController.GetAllEmployees();
+                List<Employee> activeEmployees = gameController.contractController.GetActiveEmployees();
 
-            EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = "- select an employee -"});
-            foreach (var e in employees)
-            {
-                if (activeEmployees.Contains(e)) {
-                    EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = e.name + " (busy)"});
-                } else {
-                    EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = e.name});
+                EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = "- select an employee -"});
+                foreach (var e in employees)
+                {
+                    if (activeEmployees.Contains(e)) {
+                        EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = e.name + " (busy)"});
+                    } else {
+                        EmployeeSelectDropdown.options.Add(new TMP_Dropdown.OptionData() {text = e.name});
+                    }
                 }
+                EmployeeSelectDropdown.RefreshShownValue();
             }
-            EmployeeSelectDropdown.RefreshShownValue();
         }
     }
 
