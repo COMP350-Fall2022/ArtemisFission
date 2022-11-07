@@ -21,12 +21,6 @@ public class StatController
     public Stat CreateNewStat(string name, int salary, int morale, int speed, int tech)
     {
         Stat s = new Stat(name, salary, morale, speed, tech);
-        stats.Add(s.GetGuid(), s);
-        return s.GetGuid();
-    }
-
-    public Stat GetStat(string guid)
-    {
-        return stats[guid];
+        return s;
     }
 }
