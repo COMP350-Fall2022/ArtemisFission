@@ -89,8 +89,4 @@ public class EmployeeController
             Debug.Log("    > " + entry.Key.name);
         }
     }
-
-    public void StatManager() {
-        //ToDO
-    }
 }

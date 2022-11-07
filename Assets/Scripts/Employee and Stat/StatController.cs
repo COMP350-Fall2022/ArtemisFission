@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Linq;
 
-public class StatController : MonoBehaviour
+
+public class StatController 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Dictionary<string, Stat> stats;
 
-    // Update is called once per frame
-    void Update()
+    EmployeeController employeeController;
+
+    public StatController(EmployeeController employeeController)
     {
-        
+        stats = new Dictionary<string, Stat>();
+        this.employeeController = employeeController;
     }
 }
