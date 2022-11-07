@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
-public class EmployeeStatController : MonoBehaviour
+public class StatListController : MonoBehaviour
 {
 
     public GameObject ContentPanel;

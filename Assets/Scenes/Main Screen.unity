@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 351561484}
   - component: {fileID: 351561483}
   - component: {fileID: 351561482}
-  - component: {fileID: 351561481}
+  - component: {fileID: 351561485}
   m_Layer: 5
   m_Name: 'Scroll View '
   m_TagString: Untagged
@@ -166,21 +166,6 @@ RectTransform:
   m_AnchoredPosition: {x: 198, y: 0.00018310547}
   m_SizeDelta: {x: 300, y: 0.00036621}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &351561481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351561479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff8240bdade5d04f908397373ea65d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ContentPanel: {fileID: 2114626651}
-  ListItemPrefab: {fileID: 362665799381083099}
-  gameController: {fileID: 602898102}
 --- !u!114 &351561482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +234,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351561479}
   m_CullTransparentMesh: 1
+--- !u!114 &351561485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351561479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f7e1afa189d314dbeb3a7d5cf93589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContentPanel: {fileID: 0}
+  ListItemPrefab: {fileID: 0}
+  gameController: {fileID: 0}
 --- !u!1 &501439333
 GameObject:
   m_ObjectHideFlags: 0
