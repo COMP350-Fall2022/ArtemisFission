@@ -204,11 +204,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7658659733296583164, guid: 32f7b11e7b04441bdb66931548f0f3be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -322.67975
+      value: -244
       objectReference: {fileID: 0}
     - target: {fileID: 7658659733296583164, guid: 32f7b11e7b04441bdb66931548f0f3be, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 74.760735
+      value: 298
       objectReference: {fileID: 0}
     - target: {fileID: 7658659733296583164, guid: 32f7b11e7b04441bdb66931548f0f3be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -264,7 +264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -304, y: -0.000032290664}
+  m_AnchoredPosition: {x: -191.5, y: -0.000032290664}
   m_SizeDelta: {x: 304, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &501439335
@@ -298,7 +298,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2142300725}
   m_HandleRect: {fileID: 2142300724}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -588,11 +588,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7658659733296583164, guid: 2a8ebf46a2d2c4b4491658a3cfb15477, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -336
+      value: -245
       objectReference: {fileID: 0}
     - target: {fileID: 7658659733296583164, guid: 2a8ebf46a2d2c4b4491658a3cfb15477, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 339
+      value: 467
       objectReference: {fileID: 0}
     - target: {fileID: 7658659733296583164, guid: 2a8ebf46a2d2c4b4491658a3cfb15477, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
