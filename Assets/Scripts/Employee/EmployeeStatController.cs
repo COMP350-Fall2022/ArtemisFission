@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading;
 
-public class StatManager : MonoBehaviour
+public class EmployeeStatController : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI salaryText;
