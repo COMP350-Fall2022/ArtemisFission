@@ -17,5 +17,11 @@ public class StatItemController : MonoBehaviour
         EmployeeSelectDropdown.ClearOptions();
     }
 
-   
+    // Called whenever an option is selected
+    public void HandleDropdownSelect(int val)
+    {
+        //Debug.Log(stats[val - 1].name);
+        //gameController.contractController.AssignEmployee(contract.GetGuid(), stats[val - 1].GetId());
+        EmployeeSelectDropdown.value = val - 1;
+    }
 }
