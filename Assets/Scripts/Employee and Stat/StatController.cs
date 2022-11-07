@@ -23,4 +23,5 @@ public class StatController
         Stat s = new Stat(name, salary, morale, speed, tech);
         return s;
     }
+
 }

@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     private EmployeeController employeeController = new EmployeeController(10);
     public ContractController contractController;
+    public StatController statController;
     public DateTime globalTime = new DateTime();
     public bool paused = false;
 
@@ -27,10 +28,10 @@ public class GameController : MonoBehaviour
         employeeController.CreateNewEmployee("John", 10000, null);
 
         //This line of code incorporates the stat manager.
-        //employeeController.StatManager("Andrew", 500000, 5, 4, 3);
-        //employeeController.StatManager("Frances", 500000, 5, 4, 3);
-        //employeeController.StatManager("Alex", 500000, 5, 4, 3);
-        //employeeController.StatManager("John", 500000, 5, 4, 3);
+        statController.CreateNewStat("Andrew", 500000, 5, 4, 3);
+        statController.CreateNewStat("Frances", 500000, 5, 4, 3);
+        statController.CreateNewStat("Alex", 500000, 5, 4, 3);
+        statController.CreateNewStat("John", 500000, 5, 4, 3);
     }
 
     // Update is called once per frame

@@ -17,16 +17,16 @@ public class StatListController : MonoBehaviour
 
 
     // Start is called before the first frame update
-   /* void Start()
+    void Start()
     {
       
-    }*/
+    }
 
-    /*void Update()
+    void Update()
     {
         if (gameController.contractController != null)
         {
-            
+            //Placeholder
         }
-    }*/
+    }
 }

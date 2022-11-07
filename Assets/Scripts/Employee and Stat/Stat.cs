@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 using System;
 
-// Enum object of the different skills an employee can take
+//Showcases the Employee Display stats
 
 public class Stat 
 {

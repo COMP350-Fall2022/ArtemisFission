@@ -145,4 +145,11 @@ public class ContractController
             timeOfLastTick = DateTime.Now;
         }
     }
+
+    // --------------------------------
+    // Stat Function (Passthrough)
+    // --------------------------------
+
+
+
 }
