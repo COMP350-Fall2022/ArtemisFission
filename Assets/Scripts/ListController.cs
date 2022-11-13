@@ -38,17 +38,6 @@ public class ListController : MonoBehaviour
 
                     controller.RequiredParts.text = "...";
                     controller.AwardedParts.text = "...";
-                    // if (contract.GetRequiredParts() != null) {
-                    //     controller.RequiredParts.text = "";
-                    //     foreach(Part part in contract.GetRequiredParts()) {
-                    //         if (gameController.contractController.HasPart(part)) {
-                    //             controller.RequiredParts.text += "(owned) ";
-                    //         }
-                    //         controller.RequiredParts.text += part.partName + "\n";
-                    //     }
-                    // } else {
-                    //     controller.RequiredParts.text = "...";
-                    // }
                     controller.contract = contract;
                     newContract.transform.SetParent(ContentPanel.transform, false);
                 }
