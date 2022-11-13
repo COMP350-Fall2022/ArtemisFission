@@ -35,7 +35,20 @@ public class ListController : MonoBehaviour
                     controller.Id.text = contract.GetGuid();
                     controller.AssignedEmployees.text = string.Join("\n", contract.GetAssignedEmployees());
                     controller.ContractProgress.text = contract.GetCompletedWork() + " / " + contract.GetTotalEffort();
+
                     controller.RequiredParts.text = "...";
+                    controller.AwardedParts.text = "...";
+                    // if (contract.GetRequiredParts() != null) {
+                    //     controller.RequiredParts.text = "";
+                    //     foreach(Part part in contract.GetRequiredParts()) {
+                    //         if (gameController.contractController.HasPart(part)) {
+                    //             controller.RequiredParts.text += "(owned) ";
+                    //         }
+                    //         controller.RequiredParts.text += part.partName + "\n";
+                    //     }
+                    // } else {
+                    //     controller.RequiredParts.text = "...";
+                    // }
                     controller.contract = contract;
                     newContract.transform.SetParent(ContentPanel.transform, false);
                 }

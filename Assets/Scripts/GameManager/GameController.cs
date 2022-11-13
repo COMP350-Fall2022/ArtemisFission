@@ -1,5 +1,8 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Runtime.InteropServices;
 
 // A class to control and coordinate events between controllers and the UI
 public class GameController : MonoBehaviour
@@ -11,9 +14,13 @@ public class GameController : MonoBehaviour
 
     void Start() {
         contractController = new ContractController(employeeController);
-        contractController.CreateNewContract("Thruster", 10000, 10, 1);
-        contractController.CreateNewContract("R&D", 500, 10, 1);
-        contractController.CreateNewContract("MatSci", 100, 10, 1);
+
+        Part tier2Part = contractController.CreatePart("Tier 2", false);
+        Part tier3Part = contractController.CreatePart("Tier 3", false);
+
+        contractController.CreateNewContract("Thruster", 500, 10, 1, null, new List<Part>{tier2Part});
+        contractController.CreateNewContract("R&D", 500, 10, 1, new List<Part>{tier2Part}, new List<Part>{tier3Part});
+        contractController.CreateNewContract("MatSci", 100, 10, 1, new List<Part>{tier3Part}, null);
         contractController.CreateNewContract("4", 100, 10, 1);
         contractController.CreateNewContract("5", 100, 10, 1);
         contractController.CreateNewContract("6", 100, 10, 1);
@@ -43,11 +50,11 @@ public class GameController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("paused");
+            // Debug.Log("paused");
             paused = !paused;
         }
 
-        Debug.Log("paused = " + paused);
+        // Debug.Log("paused = " + paused);
         return paused;
     }
 }
