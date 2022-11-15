@@ -8,7 +8,7 @@ public class Part
 {
     internal string partName;
     private Guid guid;
-    private bool isConsumable;
+    public bool isConsumable;
 
     public Part(string partName, bool isConsumable) {
         this.partName = partName;

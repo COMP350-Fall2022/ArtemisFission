@@ -136,6 +136,14 @@ public class ContractController
         return newPart;
     }
 
+    public bool RemovePart(Part part) {
+        if (HasPart(part)) {
+            return ownedParts.Remove(part);
+        } else {
+            return false;
+        }
+    }
+
     public List<Part> GetOwnedParts() {
         return this.ownedParts;
     }
@@ -209,6 +217,13 @@ public class ContractController
                     }
                     entry.Value.UnassignAllEmployees();
 
+                    if (entry.Value.HasRequiredParts()) {
+                        foreach(Part p in entry.Value.GetRequiredParts()) {
+                            if (p.isConsumable) {
+                                RemovePart(p);
+                            }
+                        }
+                    }
                     AwardParts(entry.Value);
                 }
             }
