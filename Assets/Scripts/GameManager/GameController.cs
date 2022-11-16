@@ -4,24 +4,27 @@ using System;
 // A class to control and coordinate events between controllers and the UI
 public class GameController : MonoBehaviour
 {
-    public EmployeeController employeeController = new EmployeeController(10);
-    public ContractController contractController = new ContractController();
+    private EmployeeController employeeController = new EmployeeController(10);
+    public ContractController contractController;
     public DateTime globalTime = new DateTime();
+    public bool paused = false;
 
     void Start() {
-        contractController.CreateNewContract("Contract1", 100, 10, 1);
-        contractController.CreateNewContract("Contract2", 100, 10, 1);
-        contractController.CreateNewContract("Contract3", 100, 10, 1);
-        contractController.CreateNewContract("Contract4", 100, 10, 1);
-        contractController.CreateNewContract("Contract5", 100, 10, 1);
-        contractController.CreateNewContract("Contract6", 100, 10, 1);
-        contractController.CreateNewContract("Contract7", 100, 10, 1);
-        contractController.CreateNewContract("Contract8", 100, 10, 1);
-        contractController.CreateNewContract("Contract9", 100, 10, 1);
+        contractController = new ContractController(employeeController);
+        contractController.CreateNewContract("Thruster", 10000, 10, 1);
+        contractController.CreateNewContract("R&D", 500, 10, 1);
+        contractController.CreateNewContract("MatSci", 100, 10, 1);
+        contractController.CreateNewContract("4", 100, 10, 1);
+        contractController.CreateNewContract("5", 100, 10, 1);
+        contractController.CreateNewContract("6", 100, 10, 1);
+        contractController.CreateNewContract("7", 100, 10, 1);
+        contractController.CreateNewContract("8", 100, 10, 1);
+        contractController.CreateNewContract("9", 100, 10, 1);
 
-        employeeController.CreateNewEmployee("Andrew Graves", 10000, null);
-        employeeController.CreateNewEmployee("Andrew Graves2", 10000, null);
-        employeeController.CreateNewEmployee("Andrew Graves3", 10000, null);
+        employeeController.CreateNewEmployee("Andrew", 10000, null);
+        employeeController.CreateNewEmployee("Frances", 10000, null);
+        employeeController.CreateNewEmployee("Alex", 10000, null);
+        employeeController.CreateNewEmployee("John", 10000, null);
     }
 
     // Update is called once per frame
@@ -29,6 +32,22 @@ public class GameController : MonoBehaviour
     {
         // handle tick behavior right here
         this.globalTime = this.globalTime.AddTicks(1000);
-        contractController.Tick();
+        
+        if (!PausePressed())
+        {
+            contractController.Tick();
+        }
+    }
+
+    bool PausePressed()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("paused");
+            paused = !paused;
+        }
+
+        Debug.Log("paused = " + paused);
+        return paused;
     }
 }
