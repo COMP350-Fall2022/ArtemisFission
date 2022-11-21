@@ -13,16 +13,27 @@ public class Contract
     List<string> assignedEmployees = new List<string>();
     int amountAwarded;
     int contractType;
-
+    List<Part> requiredParts = new List<Part>();
+    List<Part> awardedParts = new List<Part>();
     private Guid guid;
 
-    public Contract(string contractName, float totalEffort, int amountAwarded, int contractType)
+    public Contract(string contractName, float totalEffort, int amountAwarded, int contractType, List<Part> requiredParts, List<Part> awardedParts)
     {
         this.contractName = contractName;
         this.totalEffort = totalEffort;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
+        this.requiredParts = requiredParts;
+        this.awardedParts = awardedParts;
+
+        if (requiredParts != null) {
+            this.requiredParts = requiredParts;
+        }
+
+        if (awardedParts != null) {
+            this.awardedParts = awardedParts;
+        }
     }
 
     public void SetName(string newName)
@@ -59,6 +70,22 @@ public class Contract
         return this.guid.ToString();
     }
 
+    public List<Part> GetRequiredParts() {
+        return this.requiredParts;
+    }
+
+    public bool HasRequiredParts() {
+        if (this.requiredParts != null && this.requiredParts.Count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public List<Part> GetAwardedParts() {
+        return this.awardedParts;
+    }
+
     public List<string> GetAssignedEmployees() {
         return assignedEmployees;
     }
@@ -89,8 +116,12 @@ public class Contract
     }
 
     public void IncrementWork(float work)
-    {
-        completedWork += work;
+    {        
+        if (completedWork + work >= totalEffort) {
+            completedWork = totalEffort;
+        } else {
+            completedWork += work;
+        }
     }
 
     public bool IsComplete()
