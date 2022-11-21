@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour
     public ContractController contractController;
     public DateTime globalTime = new DateTime();
     public bool paused = false;
+    public bool storeOpened = false;
+
+    public GameObject popupPrefab;
 
     void Start() {
         contractController = new ContractController(employeeController);
@@ -43,6 +46,18 @@ public class GameController : MonoBehaviour
         if (!PausePressed())
         {
             contractController.Tick();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S)) {
+            storeOpened = !storeOpened;
+        }
+
+        if (storeOpened) {
+            Debug.Log("Store Opened");
+            popupPrefab.SetActive(true);
+        } else {
+            Debug.Log("Store Closed");
+            popupPrefab.SetActive(false);
         }
     }
 
