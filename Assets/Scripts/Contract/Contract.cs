@@ -13,16 +13,31 @@ public class Contract
     List<string> assignedEmployees = new List<string>();
     int amountAwarded;
     int contractType;
-
+    List<Part> requiredParts = new List<Part>();
+    List<Part> awardedParts = new List<Part>();
     private Guid guid;
 
+<<<<<<< HEAD
     public Contract(string contractName, float totalEffort, int amountAwarded, int contractType)
+=======
+    public Contract(string contractName, float totalEffort, int amountAwarded, int contractType, List<Part> requiredParts, List<Part> awardedParts)
+>>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
     {
         this.contractName = contractName;
         this.totalEffort = totalEffort;
         this.amountAwarded = amountAwarded;
         this.contractType = contractType;
         this.guid = Guid.NewGuid();
+        this.requiredParts = requiredParts;
+        this.awardedParts = awardedParts;
+
+        if (requiredParts != null) {
+            this.requiredParts = requiredParts;
+        }
+
+        if (awardedParts != null) {
+            this.awardedParts = awardedParts;
+        }
     }
 
     public void SetName(string newName)
@@ -59,6 +74,25 @@ public class Contract
         return this.guid.ToString();
     }
 
+<<<<<<< HEAD
+=======
+    public List<Part> GetRequiredParts() {
+        return this.requiredParts;
+    }
+
+    public bool HasRequiredParts() {
+        if (this.requiredParts != null && this.requiredParts.Count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public List<Part> GetAwardedParts() {
+        return this.awardedParts;
+    }
+
+>>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
     public List<string> GetAssignedEmployees() {
         return assignedEmployees;
     }
@@ -89,8 +123,17 @@ public class Contract
     }
 
     public void IncrementWork(float work)
+<<<<<<< HEAD
     {
         completedWork += work;
+=======
+    {        
+        if (completedWork + work >= totalEffort) {
+            completedWork = totalEffort;
+        } else {
+            completedWork += work;
+        }
+>>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
     }
 
     public bool IsComplete()

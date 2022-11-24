@@ -35,7 +35,13 @@ public class ListController : MonoBehaviour
                     controller.Id.text = contract.GetGuid();
                     controller.AssignedEmployees.text = string.Join("\n", contract.GetAssignedEmployees());
                     controller.ContractProgress.text = contract.GetCompletedWork() + " / " + contract.GetTotalEffort();
+<<<<<<< HEAD
                     controller.RequiredParts.text = "...";
+=======
+
+                    controller.RequiredParts.text = "...";
+                    controller.AwardedParts.text = "...";
+>>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
                     controller.contract = contract;
                     newContract.transform.SetParent(ContentPanel.transform, false);
                 }
