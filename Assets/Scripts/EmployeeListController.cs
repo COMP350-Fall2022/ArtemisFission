@@ -34,6 +34,7 @@ public class EmployeeListController : MonoBehaviour
                     // contractObjects.Add(employee.GetGuid(), newContract);
                     ListItemController controller = newContract.GetComponent<ListItemController>();
                     controller.Name.text = employee.GetName();
+                    controller.Salary.text = employee.GetSalary().ToString();
                     controller.Id.text = employee.GetId();
                     // controller.AssignedEmployees.text = string.Join("\n", employee.GetAssignedEmployees());
                     // controller.ContractProgress.text = employee.GetCompletedWork() + " / " + employee.GetTotalEffort();

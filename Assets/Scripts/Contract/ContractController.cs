@@ -7,12 +7,9 @@ public class ContractController
 {
     Dictionary<string, Contract> contracts;
 
-<<<<<<< HEAD
-=======
     List<Part> unownedParts = new List<Part>();
     List<Part> ownedParts = new List<Part>();
 
->>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
     EmployeeController employeeController;
 
     public ContractController(EmployeeController employeeController)
@@ -22,19 +19,11 @@ public class ContractController
     }
 
     // --------------------------------
-<<<<<<< HEAD
-    // Contract Functions (Passthrough)
-    // --------------------------------
-    public string CreateNewContract(string contractName, float totalEffort, int amountAwarded, int contractType)
-    {
-        Contract c = new Contract(contractName, totalEffort, amountAwarded, contractType);
-=======
     // Contract Functions
     // --------------------------------
     public string CreateNewContract(string contractName, float totalEffort, int amountAwarded, int contractType, List<Part> requiredParts = null, List<Part> awardedParts = null)
     {
         Contract c = new Contract(contractName, totalEffort, amountAwarded, contractType, requiredParts, awardedParts);
->>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
         contracts.Add(c.GetGuid(), c);
         return c.GetGuid();
     }
@@ -137,8 +126,6 @@ public class ContractController
         return employeeController.GetActiveEmployees();
     }
 
-<<<<<<< HEAD
-=======
     // --------------------------------
     // Part Functions
     // --------------------------------
@@ -197,7 +184,6 @@ public class ContractController
         return true;
     }
 
->>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
     public DateTime timeOfLastTick = DateTime.Now;
     public int TICK_THRESHOLD = 100000;
 
@@ -207,8 +193,6 @@ public class ContractController
             // Debug.Log("Ticking");
             foreach (KeyValuePair<string, Contract> entry in contracts) 
             {
-<<<<<<< HEAD
-=======
 
                 //check for required parts
                 if (entry.Value.HasRequiredParts()) {
@@ -224,7 +208,6 @@ public class ContractController
                     }
                 }
 
->>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
                 entry.Value.IncrementWork(entry.Value.GetAssignedEmployees().Count);
 
                 if (entry.Value.IsComplete()) {
@@ -233,8 +216,6 @@ public class ContractController
                         employeeController.UnassignEmployee(eId);
                     }
                     entry.Value.UnassignAllEmployees();
-<<<<<<< HEAD
-=======
 
                     if (entry.Value.HasRequiredParts()) {
                         foreach(Part p in entry.Value.GetRequiredParts()) {
@@ -244,7 +225,6 @@ public class ContractController
                         }
                     }
                     AwardParts(entry.Value);
->>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
                 }
             }
             timeOfLastTick = DateTime.Now;

@@ -17,11 +17,13 @@ public class Employee
     internal string name;
     int salary;
     EmployeeSkill[] skills;
+    bool hired;
     private Guid id;
-    public Employee(string name, int salary, EmployeeSkill[] skills) {
+    public Employee(string name, int salary, EmployeeSkill[] skills, bool hired) {
         this.name = name;
         this.salary = salary;
         this.skills = skills;
+        this.hired = hired;
         this.id = System.Guid.NewGuid();
     }
 
@@ -44,6 +46,14 @@ public class Employee
 
     public int GetSalary() {
         return this.salary;
+    }
+
+    public bool GetHired() {
+        return this.hired;
+    }
+
+    public void SetHired() {
+        this.hired = true;
     }
 }
 

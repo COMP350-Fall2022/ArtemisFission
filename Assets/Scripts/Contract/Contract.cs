@@ -17,11 +17,7 @@ public class Contract
     List<Part> awardedParts = new List<Part>();
     private Guid guid;
 
-<<<<<<< HEAD
-    public Contract(string contractName, float totalEffort, int amountAwarded, int contractType)
-=======
     public Contract(string contractName, float totalEffort, int amountAwarded, int contractType, List<Part> requiredParts, List<Part> awardedParts)
->>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
     {
         this.contractName = contractName;
         this.totalEffort = totalEffort;
@@ -74,8 +70,6 @@ public class Contract
         return this.guid.ToString();
     }
 
-<<<<<<< HEAD
-=======
     public List<Part> GetRequiredParts() {
         return this.requiredParts;
     }
@@ -92,7 +86,6 @@ public class Contract
         return this.awardedParts;
     }
 
->>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
     public List<string> GetAssignedEmployees() {
         return assignedEmployees;
     }
@@ -123,17 +116,12 @@ public class Contract
     }
 
     public void IncrementWork(float work)
-<<<<<<< HEAD
-    {
-        completedWork += work;
-=======
     {        
         if (completedWork + work >= totalEffort) {
             completedWork = totalEffort;
         } else {
             completedWork += work;
         }
->>>>>>> 354c3481a3e0e547ccce215bd079a68d7db0436b
     }
 
     public bool IsComplete()
