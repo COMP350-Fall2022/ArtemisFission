@@ -55,5 +55,9 @@ public class Employee
     public void SetHired() {
         this.hired = true;
     }
+
+    public void UnsetHired() {
+        this.hired = false;
+    }
 }
 

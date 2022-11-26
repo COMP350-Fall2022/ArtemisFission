@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
         if (storeOpened) {
             Debug.Log("Store Opened");
             popupPrefab.SetActive(true);
-            employeeController.CheckHired();  
+            employeeController.HiringSystem();  
         } else {
             Debug.Log("Store Closed");
             popupPrefab.SetActive(false);
