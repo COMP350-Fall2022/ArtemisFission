@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class ListItemController : MonoBehaviour
 {
-    public TMP_Text Name, Salary, Id, AssignedEmployees, RequiredParts, ContractProgress, EmployeeSelectLabel, AwardedParts;
+    public TMP_Text Name, Id, AssignedEmployees, RequiredParts, ContractProgress, EmployeeSelectLabel, AwardedParts;
     public TMP_Dropdown EmployeeSelectDropdown;
     public GameController gameController;
     private List<Employee> employees;
