@@ -1,5 +1,9 @@
 using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 // A class to control and coordinate events between controllers and the UI
 public class GameController : MonoBehaviour
@@ -8,6 +12,10 @@ public class GameController : MonoBehaviour
     public ContractController contractController;
     public DateTime globalTime = new DateTime();
     public bool paused = false;
+    public TextMeshProUGUI displayMoney;
+
+    private Resources GameResources = new Resources();
+    private int TicCount = 0;
 
     void Start() {
         contractController = new ContractController(employeeController);
@@ -25,6 +33,13 @@ public class GameController : MonoBehaviour
         employeeController.CreateNewEmployee("Frances", 10000, null);
         employeeController.CreateNewEmployee("Alex", 10000, null);
         employeeController.CreateNewEmployee("John", 10000, null);
+
+        GameResources.SetMoney(500000f);
+        GameResources.SetPartAmount("Tools", 0);
+        
+        displayMoney.text = "Resources:\nMoney: $" + FormatValue(GameResources.GetMoney()) +
+    //                        "\nMorale: " + FormatValue (GetTotalMorale(GameResources.GetAllEmployeesMorale())) + 
+                            "\nParts: " + FormatValue(GameResources.GetPartAmount("Tools"));
     }
 
     // Update is called once per frame
@@ -36,6 +51,12 @@ public class GameController : MonoBehaviour
         if (!PausePressed())
         {
             contractController.Tick();
+            TicCount++;
+        }
+        if(TicCount % 10 == 0) {
+            displayMoney.text = "Resources:\nMoney: $" + FormatValue(GameResources.GetMoney()) +
+    //                            "\nMorale: " + FormatValue (GetTotalMorale(GameResources.GetAllEmployeesMorale())) + 
+                                "\nParts: " + FormatValue(GameResources.GetPartAmount("Tools"));
         }
     }
 
@@ -49,5 +70,21 @@ public class GameController : MonoBehaviour
 
         Debug.Log("paused = " + paused);
         return paused;
+    }
+
+    string FormatValue (float value){
+        return value.ToString ();
+    }
+
+    float GetTotalMorale (Dictionary<string, float> moraleInput){
+        if (moraleInput.Count == 0) {
+            return 3.6f;
+        }
+        Dictionary<string, float>.ValueCollection moraleDict = moraleInput.Values;
+        float totalMorale = 0f;
+        foreach(float val in moraleDict){
+            totalMorale += val;
+        }
+        return totalMorale;
     }
 }
