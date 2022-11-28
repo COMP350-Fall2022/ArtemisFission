@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
         GameResources.SetPartAmount("Tools", 0);
         
         displayMoney.text = "Resources:\nMoney: $" + FormatValue(GameResources.GetMoney()) +
-    //                        "\nMorale: " + FormatValue (GetTotalMorale(GameResources.GetAllEmployeesMorale())) + 
+                            "\nMorale: " + FormatValue (GetTotalMorale(GameResources.GetAllEmployeesMorale())) + 
                             "\nParts: " + FormatValue(GameResources.GetPartAmount("Tools"));
     }
 
@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
         }
         if(TicCount % 10 == 0) {
             displayMoney.text = "Resources:\nMoney: $" + FormatValue(GameResources.GetMoney()) +
-    //                            "\nMorale: " + FormatValue (GetTotalMorale(GameResources.GetAllEmployeesMorale())) + 
+                                "\nMorale: " + FormatValue (GetTotalMorale(GameResources.GetAllEmployeesMorale())) + 
                                 "\nParts: " + FormatValue(GameResources.GetPartAmount("Tools"));
         }
     }
@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
 
     float GetTotalMorale (Dictionary<string, float> moraleInput){
         if (moraleInput.Count == 0) {
-            return 3.6f;
+            return 3.6f; //not good not bad either
         }
         Dictionary<string, float>.ValueCollection moraleDict = moraleInput.Values;
         float totalMorale = 0f;
