@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
 
     private Resources GameResources = new Resources();
     private int TicCount = 0;
+    private float GameMoney = 0;
 
     void Start() {
         contractController = new ContractController(employeeController);
@@ -53,11 +54,17 @@ public class GameController : MonoBehaviour
             contractController.Tick();
             TicCount++;
         }
-        if(TicCount % 10 == 0) {
-            displayMoney.text = "Resources:\nMoney: $" + FormatValue(GameResources.GetMoney()) +
-                                "\nMorale: " + FormatValue (GetTotalMorale(GameResources.GetAllEmployeesMorale())) + 
-                                "\nParts: " + FormatValue(GameResources.GetPartAmount("Tools"));
+        if (TicCount % 5000 == 0){
+            GameMoney = GameResources.GetMoney();
+            GameMoney = GameMoney - GetAllEmployeesSalary(employeeController.GetEmployees());
+            GameResources.SetMoney(GameMoney);
+            Debug.Log("GameMoney" + GameMoney.ToString() + "TicCount: " + TicCount.ToString());
+
         }
+        displayMoney.text = "Resources:\nMoney: $" + FormatValue(GameResources.GetMoney()) +
+                            "\nMorale: " + FormatValue (GetTotalMorale(GameResources.GetAllEmployeesMorale())) + 
+                            "\nParts: " + FormatValue(GameResources.GetPartAmount("Tools"));
+
     }
 
     bool PausePressed()
@@ -68,7 +75,7 @@ public class GameController : MonoBehaviour
             paused = !paused;
         }
 
-        Debug.Log("paused = " + paused);
+        //Debug.Log("paused = " + paused);
         return paused;
     }
 
@@ -87,4 +94,14 @@ public class GameController : MonoBehaviour
         }
         return totalMorale;
     }
+
+    float GetAllEmployeesSalary(List <Employee> EmployeeList){
+        float TotalSalary = 0;
+        foreach (Employee employee in EmployeeList){
+            TotalSalary += employee.GetSalary(); 
+        }
+        Debug.Log(TotalSalary.ToString());
+        return TotalSalary;
+    }
+
 }
