@@ -6,13 +6,17 @@ using UnityEngine.UIElements;
 
 public class ListItemController : MonoBehaviour
 {
-    public TMP_Text Name, Id, AssignedEmployees, RequiredParts, ContractProgress, EmployeeSelectLabel;
+    public TMP_Text Name, Id, AssignedEmployees, RequiredParts, ContractProgress, EmployeeSelectLabel, AwardedParts;
     public TMP_Dropdown EmployeeSelectDropdown;
     public GameController gameController;
     private List<Employee> employees;
     public Contract contract = null;
     void Start() {
         EmployeeSelectDropdown.ClearOptions();
+
+        EmployeeSelectDropdown.onValueChanged.AddListener(delegate {
+            DropdownValueChanged(EmployeeSelectDropdown);
+        });
         // EmployeeSelectDropdown.value = -1;
     }
 
@@ -25,10 +29,28 @@ public class ListItemController : MonoBehaviour
                 foreach (var e in contractEmployeeIds) {
                     AssignedEmployees.text += ( gameController.contractController.GetEmployeeFromId(e).name + "\n" );
                 }
-            }
 
-            if (contract != null) {
                 ContractProgress.text = contract.GetCompletedWork() + " / " + contract.GetTotalEffort();
+
+                if (RequiredParts != null && contract.GetRequiredParts() != null && contract.GetRequiredParts().Count > 0) {
+                    RequiredParts.text = "";
+                    foreach(Part part in contract.GetRequiredParts()) {
+                        if (gameController.contractController.HasPart(part)) {
+                            RequiredParts.text += "(Y) - ";
+                        } else {
+                            RequiredParts.text += "(N) - ";
+                        }
+                        RequiredParts.text += part.partName + "\n";
+                    }
+                }
+
+                if (AwardedParts != null && contract.GetAwardedParts() != null && contract.GetAwardedParts().Count > 0) {
+                    AwardedParts.text = "";
+
+                    foreach(Part part in contract.GetAwardedParts()) {
+                        AwardedParts.text += part.partName + "\n";
+                    }
+                }
             }
 
             // TODO: Remove this later when we go back after this sprint
@@ -51,10 +73,9 @@ public class ListItemController : MonoBehaviour
         }
     }
 
-    // Called whenever an option is selected
-    public void HandleDropdownSelect(int val) {
-        Debug.Log(employees[val-1].name);
-        gameController.contractController.AssignEmployee(contract.GetGuid(), employees[val-1].GetId());
-        EmployeeSelectDropdown.value = val-1;
+    public void DropdownValueChanged(TMP_Dropdown dropdown) {
+        Debug.Log("CALLED: " + dropdown.value + " from " + contract.contractName);
+        gameController.contractController.AssignEmployee(contract.GetGuid(), employees[dropdown.value-1].GetId());
+        // EmployeeSelectDropdown.value = dropdown.value-1;
     }
 }
