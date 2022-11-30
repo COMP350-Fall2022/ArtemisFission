@@ -13,8 +13,8 @@ public class EmployeeController
     }
 
     // Creates an employee and returns the ID for it.
-    public Employee CreateNewEmployee(string name, int salary, EmployeeSkill[] skills) {
-        Employee e = new Employee(name, salary, skills);
+    public Employee CreateNewEmployee(string name, int salary, EmployeeSkill[] skills, bool hired) {
+        Employee e = new Employee(name, salary, skills, hired);
         employees.Add(e, false);
         return e;
     }
@@ -86,5 +86,70 @@ public class EmployeeController
         foreach(KeyValuePair<Employee, bool> entry in employees) {
             Debug.Log("    > " + entry.Key.name);
         }
+    }
+
+    public void HireEmployee(string id)
+    {
+        Employee e = GetEmployeeFromId(id);
+        e.SetHired();
+    }
+
+    public void HiringSystem()
+    {
+        List<Employee> tmp = new List<Employee>(GetEmployees());
+                
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    string id = tmp[0].GetId();
+                    HireEmployee(id);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    string id = tmp[1].GetId();
+                    HireEmployee(id);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    string id = tmp[2].GetId();
+                    HireEmployee(id);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    string id = tmp[3].GetId();
+                    HireEmployee(id);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha5))
+                {
+                    string id = tmp[4].GetId();
+                    HireEmployee(id);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha6))
+                {
+                    string id = tmp[5].GetId();
+                    HireEmployee(id);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha7))
+                {
+                    string id = tmp[6].GetId();
+                    HireEmployee(id);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha8))
+                {
+                    string id = tmp[7].GetId();
+                    HireEmployee(id);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha9))
+                {
+                    string id = tmp[8].GetId();
+                    HireEmployee(id);
+                }
     }
 }
