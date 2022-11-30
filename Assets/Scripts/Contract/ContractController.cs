@@ -126,6 +126,11 @@ public class ContractController
         return employeeController.GetActiveEmployees();
     }
 
+    public List<Contract> GetEmployeeContracts(string employeeId) {
+        // Employee emp = employeeController.GetEmployeeFromId(employeeId);
+        return contracts.Values.ToList().FindAll(c => c.GetAssignedEmployees().Contains(employeeId));
+    }
+
     // --------------------------------
     // Part Functions
     // --------------------------------

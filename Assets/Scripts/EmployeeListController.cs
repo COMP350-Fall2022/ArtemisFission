@@ -22,24 +22,35 @@ public class EmployeeListController : MonoBehaviour
 
     void Update() {
         if (gameController.contractController != null) {
-            // contracts = gameController.contractController.GetAllContracts();
             employees = gameController.contractController.GetAllEmployees();
-            // employees = gameController.
         }
 
         if (employees != null && !employees.Equals(prevEmployees)) {
             foreach (Employee employee in employees) {
-                if (!prevEmployees.Contains(employee)) {
+                if (!prevEmployees.Contains(employee) && !contractObjects.ContainsKey(employee.GetId())) {
                     GameObject newContract = Instantiate(ListItemPrefab) as GameObject;
-                    // contractObjects.Add(employee.GetGuid(), newContract);
-                    ListItemController controller = newContract.GetComponent<ListItemController>();
+                    contractObjects.Add(employee.GetId(), newContract);
+                    EmployeeListItemController controller = newContract.GetComponent<EmployeeListItemController>();
                     controller.Name.text = employee.GetName();
                     controller.Id.text = employee.GetId();
-                    // controller.AssignedEmployees.text = string.Join("\n", employee.GetAssignedEmployees());
-                    // controller.ContractProgress.text = employee.GetCompletedWork() + " / " + employee.GetTotalEffort();
-                    // controller.RequiredParts.text = "...";
-                    // controller.contract = contract;
                     newContract.transform.SetParent(ContentPanel.transform, false);
+                }
+
+                if (contractObjects.ContainsKey(employee.GetId())) {
+                    Debug.Log("Contained Key: " + employee.GetName());
+                    GameObject employeeCard = contractObjects[employee.GetId()];
+                    if (employeeCard != null) {
+                        EmployeeListItemController controller = employeeCard.GetComponent<EmployeeListItemController>();
+                        string returnString = "";
+                        List<Contract> employeeContracts = gameController.contractController.GetEmployeeContracts(employee.GetId());
+                        if (employeeContracts.Count > 0) {
+                            foreach (Contract c in employeeContracts) {
+                                returnString += c.contractName;
+                            }
+                            Debug.Log("Return String: " + returnString);
+                        }
+                        controller.AssignedContracts.text = returnString;
+                    }
                 }
             }
             foreach(Employee p in prevEmployees) {
